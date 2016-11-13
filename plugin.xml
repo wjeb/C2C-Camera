@@ -33,13 +33,13 @@
         </config-file>
 		
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:name="com.c2c.CameraActivity" android:screenOrientation="portrait" android:theme="@style/CameraPreviewTheme" />
+            <activity android:name="com.c2c.camera.MainActivity" android:screenOrientation="portrait" android:theme="@style/C2CCameraTheme" />
         </config-file>
 		
-        <source-file src="src/android/com/c2c/CameraPreview.java" target-dir="src/com/c2c" />
-        <source-file src="src/android/com/c2c/CameraActivity.java" target-dir="src/com/c2c" />
-        <source-file src="src/android/com/c2c/camera_activity.xml" target-dir="res/layout" />
-        <source-file src="src/android/com/c2c/camera_theme.xml" target-dir="res/values" />
+        <source-file src="src/android/com/c2c/camera/C2CCamera.java" target-dir="src/com/c2c" />
+        <source-file src="src/android/com/c2c/camera/MainActivity.java" target-dir="src/com/c2c" />
+        <source-file src="src/android/com/c2c/camera/camera_activity.xml" target-dir="res/layout" />
+        <source-file src="src/android/com/c2c/camera/camera_theme.xml" target-dir="res/values" />
 		
     </platform>
 	

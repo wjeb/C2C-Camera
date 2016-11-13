@@ -1,4 +1,4 @@
-package com.c2c;
+package com.c2c.camera;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -41,14 +41,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class CameraActivity extends Fragment {
+public class MainActivity extends Fragment {
 
-	public interface CameraPreviewListener {
+	public interface C2CCameraListener {
 		public void onPictureTaken(String originalPictureInBase64);
 	}
 
-	private CameraPreviewListener eventListener;
-	private static final String TAG = "CameraActivity";
+	private C2CCameraListener eventListener;
+	private static final String TAG = "MainActivity";
 	
 	public FrameLayout mainLayout;
 	public FrameLayout frameContainerLayout;
@@ -73,7 +73,7 @@ public class CameraActivity extends Fragment {
 	public int x;
 	public int y;
 
-	public void setEventListener(CameraPreviewListener listener) {
+	public void setEventListener(C2CCameraListener listener) {
 		Log.d(TAG, "LOL: setEventListener");
 		eventListener = listener;
 	}
@@ -87,7 +87,7 @@ public class CameraActivity extends Fragment {
 		
 	    // Inflate the layout for this fragment
 	    view = inflater.inflate(getResources().getIdentifier("camera_activity", "layout", appResourcesPackage), container, false);
-	    createCameraPreview();
+	    createC2CCamera();
 		
 		Log.d(TAG, "LOL: onCreateView return");
 		
@@ -113,9 +113,9 @@ public class CameraActivity extends Fragment {
 		
 	}
 
-	private void createCameraPreview(){
+	private void createC2CCamera(){
 		
-		Log.d(TAG, "LOL: createCameraPreview function");
+		Log.d(TAG, "LOL: createC2CCamera function");
 		
 		if(mPreview == null){
 			
@@ -127,7 +127,7 @@ public class CameraActivity extends Fragment {
 			frameContainerLayout = (FrameLayout) view.findViewById(getResources().getIdentifier("frame_container", "id", appResourcesPackage));
 			frameContainerLayout.setLayoutParams(layoutParams);
 			
-			Log.d(TAG, "LOL: createCameraPreview 1");
+			Log.d(TAG, "LOL: createC2CCamera 1");
 			
 			//video view
 			mPreview = new Preview(getActivity());
@@ -138,7 +138,7 @@ public class CameraActivity extends Fragment {
 			
         }
 		
-		Log.d(TAG, "LOL: createCameraPreview 2-3");
+		Log.d(TAG, "LOL: createC2CCamera 2-3");
 		
     }
 	
@@ -293,33 +293,6 @@ public class CameraActivity extends Fragment {
 		
 	}
 	
-    public void setCameraParameters(Camera.Parameters params){
-		
-		Log.d(TAG, "LOL: setCameraParameters");
-		cameraParameters = params;
-		
-		if(cameraParameters != null){
-			mCamera.setParameters(cameraParameters);
-		}
-		
-    }
-
-    public Bitmap cropBitmap(Bitmap bitmap, Rect rect){
-		
-		Log.d(TAG, "LOL: cropBitmap");
-		
-        int w = rect.right - rect.left;
-        int h = rect.bottom - rect.top;
-		
-        Bitmap ret = Bitmap.createBitmap(w, h, bitmap.getConfig());
-			
-			Canvas canvas = new Canvas(ret);
-			canvas.drawBitmap(bitmap, -rect.left, -rect.top, null);
-			
-        return ret;
-		
-    }
-
 	private Camera.AutoFocusCallback CameraAutoFocusCallback = new Camera.AutoFocusCallback(){
 		
 		public void onAutoFocus(boolean success, Camera camera) {
