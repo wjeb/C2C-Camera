@@ -21,7 +21,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	private final String setOnPictureTakenHandlerAction = "setOnPictureTakenHandler";
 	private final String startCameraAction = "startCamera";
 	private final String stopCameraAction = "stopCamera";
-	private final String switchCameraAction = "switchCamera";
 	private final String takePictureAction = "takePicture";
 	private final String showCameraAction = "showCamera";
 	private final String hideCameraAction = "hideCamera";
@@ -56,9 +55,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		}
 		else if (showCameraAction.equals(action)){
 			return showCamera(args, callbackContext);
-		}
-		else if (switchCameraAction.equals(action)){
-			return switchCamera(args, callbackContext);
 		}
 		
 		return false;
@@ -204,17 +200,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 		fragmentTransaction.hide(fragment);
 		fragmentTransaction.commit();
-		
-		return true;
-	}
-	
-	private boolean switchCamera(final JSONArray args, CallbackContext callbackContext) {
-		
-		if(fragment == null){
-			return false;
-		}
-		
-		fragment.switchCamera();
 		
 		return true;
 	}
