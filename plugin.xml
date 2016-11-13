@@ -19,7 +19,7 @@
         
 		<config-file target="res/xml/config.xml" parent="/*">
             <feature name="C2C-Camera">
-                <param name="android-package" value="com.c2c.camera" />
+                <param name="android-package" value="com.c2c" />
                 <param name="onload" value="true" />
             </feature>
         </config-file>
@@ -33,13 +33,13 @@
         </config-file>
 		
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:name="com.c2c.camera.MainActivity" android:screenOrientation="portrait" android:theme="@style/C2CCameraTheme" />
+            <activity android:name="com.c2c.MainActivity" android:screenOrientation="portrait" android:theme="@style/C2CCameraTheme" />
         </config-file>
 		
-        <source-file src="src/android/com/c2c/camera/C2CCamera.java" target-dir="src/com/c2c" />
-        <source-file src="src/android/com/c2c/camera/MainActivity.java" target-dir="src/com/c2c" />
-        <source-file src="src/android/com/c2c/camera/camera_activity.xml" target-dir="res/layout" />
-        <source-file src="src/android/com/c2c/camera/camera_theme.xml" target-dir="res/values" />
+        <source-file src="src/android/com/c2c/C2CCamera.java" target-dir="src/com/c2c" />
+        <source-file src="src/android/com/c2c/MainActivity.java" target-dir="src/com/c2c" />
+        <source-file src="src/android/com/c2c/camera_activity.xml" target-dir="res/layout" />
+        <source-file src="src/android/com/c2c/camera_theme.xml" target-dir="res/values" />
 		
     </platform>
 	
@@ -48,7 +48,7 @@
         
 		<config-file target="config.xml" parent="/*">
             <feature name="C2C-Camera">
-                <param name="ios-package" value="com.c2c.camera" onload="true" />
+                <param name="ios-package" value="com.c2c" onload="true" />
             </feature>
         </config-file>
 		

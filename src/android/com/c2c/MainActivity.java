@@ -1,4 +1,4 @@
-package com.c2c.camera;
+package com.c2c;
 
 import android.app.Activity;
 import android.app.Fragment;
