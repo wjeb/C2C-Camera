@@ -1,4 +1,4 @@
-package com.c2c;
+package com.mbppower;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -15,9 +15,9 @@ import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-public class C2CCamera extends CordovaPlugin implements MainActivity.C2CCameraListener {
+public class CameraPreview extends CordovaPlugin implements CameraActivity.CameraPreviewListener {
 
-	private final String TAG = "C2CCamera";
+	private final String TAG = "CameraPreview";
 	private final String setOnPictureTakenHandlerAction = "setOnPictureTakenHandler";
 	private final String startCameraAction = "startCamera";
 	private final String stopCameraAction = "stopCamera";
@@ -26,12 +26,12 @@ public class C2CCamera extends CordovaPlugin implements MainActivity.C2CCameraLi
 	private final String showCameraAction = "showCamera";
 	private final String hideCameraAction = "hideCamera";
 
-	private MainActivity fragment;
+	private CameraActivity fragment;
 	private CallbackContext takePictureCallbackContext;
 	
 	private int containerViewId = 1;
 
-	public C2CCamera(){
+	public CameraPreview(){
 		super();
 		Log.d(TAG, "LOL: Constructing");
 	}
@@ -57,6 +57,9 @@ public class C2CCamera extends CordovaPlugin implements MainActivity.C2CCameraLi
 		else if (showCameraAction.equals(action)){
 			return showCamera(args, callbackContext);
 		}
+		else if (switchCameraAction.equals(action)){
+			return switchCamera(args, callbackContext);
+		}
 		
 		return false;
 		
@@ -70,7 +73,7 @@ public class C2CCamera extends CordovaPlugin implements MainActivity.C2CCameraLi
 			return false;
 		}
 		
-		fragment = new MainActivity();
+		fragment = new CameraActivity();
 		fragment.setEventListener(this);
 		
 		cordova.getActivity().runOnUiThread(new Runnable() {
@@ -201,6 +204,17 @@ public class C2CCamera extends CordovaPlugin implements MainActivity.C2CCameraLi
 		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 		fragmentTransaction.hide(fragment);
 		fragmentTransaction.commit();
+		
+		return true;
+	}
+	
+	private boolean switchCamera(final JSONArray args, CallbackContext callbackContext) {
+		
+		if(fragment == null){
+			return false;
+		}
+		
+		fragment.switchCamera();
 		
 		return true;
 	}
