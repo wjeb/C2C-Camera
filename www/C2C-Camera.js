@@ -21,7 +21,7 @@
 		};
 		
 		CameraPreview.takePicture = function(size) {
-			exec(null, null, PLUGIN_NAME, "takePicture", []);
+			exec(null, null, PLUGIN_NAME, "takePicture", [0, 0]);
 		};
 		
 		CameraPreview.hide = function() {
