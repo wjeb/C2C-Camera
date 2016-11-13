@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.c2c.camera" version="1.0.0">
+    
+	<name>C2C-Camera</name>
+    <description>C2C Plugin</description>
+    
+	<license></license>
+    <keywords></keywords>
+	
+    <repo></repo>
+    <issue></issue>
+	
+    <js-module src="www/C2C-Camera.js" name="C2C-Camera">
+        <clobbers target="cordova-plugin-c2c-camera" />
+    </js-module>
+	
+    <!-- android -->
+    <platform name="android">
+        
+		<config-file target="res/xml/config.xml" parent="/*">
+            <feature name="C2C-Camera">
+                <param name="android-package" value="com.c2c.camera" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+		
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-feature android:name="android.hardware.camera" />
+            <uses-feature android:name="android.hardware.camera.autofocus" />
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-permission android:name="android.permission.FLASHLIGHT" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+		
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.c2c.CameraActivity" android:screenOrientation="portrait" android:theme="@style/CameraPreviewTheme" />
+        </config-file>
+		
+        <source-file src="src/android/com/c2c/CameraPreview.java" target-dir="src/com/c2c" />
+        <source-file src="src/android/com/c2c/CameraActivity.java" target-dir="src/com/c2c" />
+        <source-file src="src/android/com/c2c/camera_activity.xml" target-dir="res/layout" />
+        <source-file src="src/android/com/c2c/camera_theme.xml" target-dir="res/values" />
+		
+    </platform>
+	
+    <!-- ios -->
+    <platform name="ios">
+        
+		<config-file target="config.xml" parent="/*">
+            <feature name="C2C-Camera">
+                <param name="ios-package" value="com.c2c.camera" onload="true" />
+            </feature>
+        </config-file>
+		
+        <header-file src="src/ios/CameraPreview.h" />
+        <source-file src="src/ios/CameraPreview.m" />
+        <header-file src="src/ios/CameraSessionManager.h" />
+        <source-file src="src/ios/CameraSessionManager.m" />
+        <header-file src="src/ios/CameraRenderController.h" />
+        <source-file src="src/ios/CameraRenderController.m" />
+		
+        <framework src="ImageIO.framework" weak="true" />
+        <framework src="MobileCoreServices.framework" />
+        <framework src="CoreLocation.framework" />
+        <framework src="CoreGraphics.framework" />
+        <framework src="AssetsLibrary.framework" />
+        <framework src="CoreGraphics.framework" />
+        <framework src="CoreImage.framework" />
+        <framework src="OpenGLES.framework" />
+        <framework src="GLKit.framework" />
+        <framework src="CoreVideo.framework" />
+		
+    </platform>
+</plugin>
