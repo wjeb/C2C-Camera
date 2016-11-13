@@ -1,4 +1,4 @@
-package com.mbppower;
+package com.c2c;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
