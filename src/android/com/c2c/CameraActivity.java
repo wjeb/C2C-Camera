@@ -337,8 +337,8 @@ public class CameraActivity extends Fragment {
 		
 		if(mPreview != null){
 			
-			//mCamera.takePicture(null, null, CameraJPEGCallback);
-			mCamera.autoFocus(CameraAutoFocusCallback);
+			mCamera.takePicture(null, null, CameraJPEGCallback);
+			//mCamera.autoFocus(CameraAutoFocusCallback);
 			
 			if(!canTakePicture){
 				return;
@@ -415,13 +415,13 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				
 				List<String> mFocusModes = params.getSupportedFocusModes();
 					
-					if(mFocusModes.contains("continuous-video")){
+					if(mFocusModes.contains("continuous-picture")){
+						params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+					}else if(mFocusModes.contains("continuous-video")){
 						params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
 					}else if(mFocusModes.contains("auto")){
 						params.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
-					}else if(mFocusModes.contains("continuous-picture")){
-						params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
-					} 
+					}
 					
 					/*
 					if(mFocusModes.contains("auto")){
