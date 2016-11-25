@@ -75,7 +75,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		cordova.getActivity().runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-			
+				
 				try {
 					
 					DisplayMetrics metrics = cordova.getActivity().getResources().getDisplayMetrics();
@@ -90,7 +90,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 					fragment.defaultCamera = defaultCamera;
 					fragment.setRect(x, y, width, height);
 					
-					//create or update the layout params for the container view
+					// create or update the layout params for the container view
 					FrameLayout containerView = (FrameLayout)cordova.getActivity().findViewById(containerViewId);
 					if(containerView == null){
 						
