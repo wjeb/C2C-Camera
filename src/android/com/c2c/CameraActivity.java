@@ -307,7 +307,7 @@ public class CameraActivity extends Fragment {
 				
 				//eventListener.onPictureTaken("alert:Display: "+width+"x"+height+"\nPicture: "+portraitPicture.getWidth()+"x"+portraitPicture.getHeight()+"\nResult: "+picWidth+"x"+picHeight);
 				
-				int widthPercent = 30;
+				int widthPercent = 22;
 				int boxSideSize = (int) Math.round(picWidth / 100 * widthPercent);
 				
 				leftMargin = leftMargin + ((picWidth - boxSideSize) / 2);
