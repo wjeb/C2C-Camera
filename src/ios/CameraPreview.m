@@ -30,7 +30,6 @@
                 // Create the session manager
                 self.sessionManager = [[CameraSessionManager alloc] init];
 				
-				/*
                 //render controller setup
                 self.cameraRenderController = [[CameraRenderController alloc] init];
                 self.cameraRenderController.dragEnabled = dragEnabled;
@@ -39,6 +38,7 @@
                 self.cameraRenderController.view.frame = CGRectMake(x, y, width, height);
                 self.cameraRenderController.delegate = self;
 
+				/*
                 [self.viewController addChildViewController:self.cameraRenderController];
                 //display the camera bellow the webview
                 if (toBack) {
