@@ -37,10 +37,10 @@
                 self.cameraRenderController.sessionManager = self.sessionManager;
                 self.cameraRenderController.view.frame = CGRectMake(x, y, width, height);
                 self.cameraRenderController.delegate = self;
-
-				/*
+				
                 [self.viewController addChildViewController:self.cameraRenderController];
                 //display the camera bellow the webview
+				
                 if (toBack) {
                         //make transparent
                         self.webView.opaque = NO;
@@ -52,7 +52,8 @@
 
                         [self.viewController.view addSubview:self.cameraRenderController.view];
                 }
-
+				
+				/*
                 // Setup session
                 self.sessionManager.delegate = self.cameraRenderController;
                 [self.sessionManager setupSession:defaultCamera];
