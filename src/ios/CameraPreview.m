@@ -54,7 +54,7 @@
                 }
 				
 				// Setup session
-                self.sessionManager.delegate = self.cameraRenderController;
+                //self.sessionManager.delegate = self.cameraRenderController;
                 
 				/*
 				[self.sessionManager setupSession:defaultCamera];
