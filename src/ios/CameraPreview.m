@@ -18,8 +18,7 @@
                 return;
         }
 		
-		/*
-        if (command.arguments.count > 3) {
+		if (command.arguments.count > 3) {
                 CGFloat x = (CGFloat)[command.arguments[0] floatValue] + self.webView.frame.origin.x;
                 CGFloat y = (CGFloat)[command.arguments[1] floatValue] + self.webView.frame.origin.y;
                 CGFloat width = (CGFloat)[command.arguments[2] floatValue];
@@ -30,7 +29,8 @@
                 BOOL toBack = (BOOL)[command.arguments[7] boolValue];
                 // Create the session manager
                 self.sessionManager = [[CameraSessionManager alloc] init];
-
+				
+				/*
                 //render controller setup
                 self.cameraRenderController = [[CameraRenderController alloc] init];
                 self.cameraRenderController.dragEnabled = dragEnabled;
@@ -58,12 +58,13 @@
                 [self.sessionManager setupSession:defaultCamera];
 
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+				*/
+				
         } else {
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid number of parameters"];
         }
 
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-		*/
 		
 }
 
