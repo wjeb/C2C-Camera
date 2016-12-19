@@ -56,10 +56,10 @@
 				// Setup session
                 //self.sessionManager.delegate = self.cameraRenderController;
                 
-				/*
+				
 				[self.sessionManager setupSession:defaultCamera];
 				pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-				*/
+				
 				
         } else {
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid number of parameters"];
