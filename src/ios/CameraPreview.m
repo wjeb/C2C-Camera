@@ -53,11 +53,11 @@
                         [self.viewController.view addSubview:self.cameraRenderController.view];
                 }
 				
-				/*
-                // Setup session
+				// Setup session
                 self.sessionManager.delegate = self.cameraRenderController;
                 [self.sessionManager setupSession:defaultCamera];
-
+				
+				/*
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
 				*/
 				
