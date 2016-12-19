@@ -9,7 +9,9 @@
 @implementation CameraPreview
 
 - (void) startCamera:(CDVInvokedUrlCommand*)command {
-
+		
+		
+		/*
         CDVPluginResult *pluginResult;
 
         if (self.sessionManager != nil) {
@@ -62,6 +64,8 @@
         }
 
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		*/
+		
 }
 
 - (void) stopCamera:(CDVInvokedUrlCommand*)command {
@@ -171,6 +175,7 @@
 						NSString *alertMessage2 = [NSString stringWithFormat: @"Display size: %f x %f", screenWidth, screenHeight];
 						UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage2 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
 						[alert2 show];
+						#comment
 						*/
 						
 						if(displayW<=picW){
