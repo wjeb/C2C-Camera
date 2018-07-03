@@ -305,9 +305,9 @@ public class CameraActivity extends Fragment {
 				double leftMargin = Math.round( ((double)portraitPicture.getWidth() - picWidth) / 2 );
 				double topMargin = Math.round( ((double)portraitPicture.getHeight() - picHeight) / 2 );
 				
-				//eventListener.onPictureTaken("alert:Display: "+width+"x"+height+"\nPicture: "+portraitPicture.getWidth()+"x"+portraitPicture.getHeight()+"\nResult: "+picWidth+"x"+picHeight);
+				eventListener.onPictureTaken("alert:Display: "+width+"x"+height+"\nPicture: "+portraitPicture.getWidth()+"x"+portraitPicture.getHeight()+"\nResult: "+picWidth+"x"+picHeight);
 				
-				int widthPercent = 30;
+				int widthPercent = 35;
 				int boxSideSize = (int) Math.round(picWidth / 100 * widthPercent);
 				
 				leftMargin = leftMargin + ((picWidth - boxSideSize) / 2);
