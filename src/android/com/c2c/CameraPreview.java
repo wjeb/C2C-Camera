@@ -21,6 +21,8 @@ import android.content.DialogInterface;
 
 public class CameraPreview extends CordovaPlugin implements CameraActivity.CameraPreviewListener {
 
+	final Context context = this;
+
 	private final String TAG = "CameraPreview";
 	private final String setOnPictureTakenHandlerAction = "setOnPictureTakenHandler";
 	private final String startCameraAction = "startCamera";
