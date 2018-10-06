@@ -21,8 +21,6 @@ import android.content.DialogInterface;
 
 public class CameraPreview extends CordovaPlugin implements CameraActivity.CameraPreviewListener {
 
-	final Context context = this;
-
 	private final String TAG = "CameraPreview";
 	private final String setOnPictureTakenHandlerAction = "setOnPictureTakenHandler";
 	private final String startCameraAction = "startCamera";
@@ -43,13 +41,19 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 
 	private void alertView( String message ) {
 		
-		AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-		dialog.setTitle("Alert");
-		dialog.setMessage(message);
-		dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Ok", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialoginterface, int i) { }               
+		AlertDialog.Builder alertPopup = new AlertDialog.Builder(MainActivity.this);
+		alertPopup.setIcon(R.drawable.ic_android_cat);
+		alertPopup.setTitle("Alert");
+		alertPopup.setMessage(message);
+		alertPopup.setNegativeButton("ОК, иду на кухню",
+		new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				dialog.cancel();
+			}
 		});
-		dialog.show();
+		
+		AlertDialog alert = alertPopup.create();
+		alert.show();
 		
 	}
 
