@@ -69,8 +69,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 			return false;
 		}
 		
-		alertView("StartCamera");
-		
 		fragment = new CameraActivity();
 		fragment.setEventListener(this);
 		
@@ -214,20 +212,5 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		return true;
 		
 	}
-	
-	private void alertView( String message ) {
-	 AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-	 dialog.setTitle( "Hello" )
-		   .setIcon(R.drawable.ic_launcher)
-		   .setMessage(message)
-	//     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-	//      public void onClick(DialogInterface dialoginterface, int i) {
-	//          dialoginterface.cancel();   
-	//          }})
-		  .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialoginterface, int i) {   
-			}               
-			}).show();
-	 }
 	
 }

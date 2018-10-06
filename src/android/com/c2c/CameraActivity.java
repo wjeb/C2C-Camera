@@ -31,7 +31,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.graphics.SurfaceTexture;
 
-
 import org.apache.cordova.LOG;
 
 import java.io.ByteArrayOutputStream;
