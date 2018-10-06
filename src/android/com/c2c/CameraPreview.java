@@ -44,14 +44,12 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	private void alertView( String message ) {
 		
 		AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-		dialog.setTitle( "Alert" )
-			//.setIcon(R.drawable.ic_launcher)
-			.setMessage(message)
-			.setPositiveButton(DialogInterface.BUTTON_POSITIVE, "Ok", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialoginterface, int i) {
-					
-				}               
-			}).show();
+		dialog.setTitle("Alert");
+		dialog.setMessage(message);
+		dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Ok", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialoginterface, int i) { }               
+		});
+		dialog.show();
 		
 	}
 
