@@ -9,6 +9,7 @@ import android.util.TypedValue;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import android.R;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
