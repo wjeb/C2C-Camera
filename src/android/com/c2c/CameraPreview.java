@@ -35,6 +35,24 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		Log.d(TAG, "LOL: Constructing");
 	}
 
+	private void alertView( String message ) {
+		
+		AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+		dialog.setTitle( "Hello" )
+			.setIcon(R.drawable.ic_launcher)
+			.setMessage(message)
+	//    	 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+	//    	  public void onClick(DialogInterface dialoginterface, int i) {
+	//   	       dialoginterface.cancel();   
+	//   	       }})
+			.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialoginterface, int i) {
+					
+				}               
+			}).show();
+		
+	}
+
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		
@@ -61,9 +79,13 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
 	}
 
+
+
 	private boolean startCamera(final JSONArray args, CallbackContext callbackContext) {
 		
 		Log.d(TAG, "LOL: startCamera function");
+		
+		alertView("Camera started");
 		
 		if(fragment != null){
 			return false;
