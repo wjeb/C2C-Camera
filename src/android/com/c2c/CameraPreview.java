@@ -45,7 +45,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		alertPopup.setIcon(R.drawable.ic_android_cat);
 		alertPopup.setTitle("Alert");
 		alertPopup.setMessage(message);
-		alertPopup.setNegativeButton("ОК, иду на кухню",
+		alertPopup.setNegativeButton("ОК",
 		new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.cancel();
