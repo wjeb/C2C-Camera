@@ -89,7 +89,7 @@ public class CameraActivity extends Fragment {
 
 	private void alertView( String message ) {
 		
-		AlertDialog.Builder alertPopup = new AlertDialog.Builder(cordova.getActivity());
+		AlertDialog.Builder alertPopup = new AlertDialog.Builder(this.getActivity());
 		//alertPopup.setIcon(R.drawable.ic_android_cat);
 		alertPopup.setTitle("Alert");
 		alertPopup.setMessage(message);
