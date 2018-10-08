@@ -41,7 +41,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 
 	private void alertView( String message ) {
 		
-		AlertDialog.Builder alertPopup = new AlertDialog.Builder(this);
+		AlertDialog.Builder alertPopup = new AlertDialog.Builder(cordova.getActivity());
 		//alertPopup.setIcon(R.drawable.ic_android_cat);
 		alertPopup.setTitle("Alert");
 		alertPopup.setMessage(message);
