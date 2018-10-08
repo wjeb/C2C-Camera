@@ -157,6 +157,8 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
 		Log.d("warn","Picture taken...");
 		
+		alertView("Take picture");
+		
 		if(fragment == null){
 			return false;
 		}
@@ -178,6 +180,8 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	}
 
 	public void onPictureTaken(String originalPictureInBase64){
+		
+		alertView("Picture taken");
 		
 		PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, originalPictureInBase64);
 		pluginResult.setKeepCallback(true);

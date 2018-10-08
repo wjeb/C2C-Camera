@@ -117,6 +117,8 @@ public class CameraActivity extends Fragment {
 
 	private void createCameraPreview(){
 		
+		alertView("createCameraPreview");
+		
 		Log.d(TAG, "LOL: createCameraPreview function");
 		
 		if(mPreview == null){
@@ -336,6 +338,8 @@ public class CameraActivity extends Fragment {
 
 
 	public void takePicture(){
+		
+		alertView("Take picture from Activity");
 		
 		if(mPreview != null){
 			
