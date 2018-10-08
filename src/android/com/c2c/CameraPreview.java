@@ -94,7 +94,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
 		Log.d(TAG, "LOL: startCamera function");
 		
-		alertView("Camera started");
+		alertView("Preview: StartCamera");
 		
 		if(fragment != null){
 			return false;
@@ -157,7 +157,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
 		Log.d("warn","Picture taken...");
 		
-		alertView("Take picture");
+		alertView("Preview: takePicture");
 		
 		if(fragment == null){
 			return false;
@@ -181,7 +181,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 
 	public void onPictureTaken(String originalPictureInBase64){
 		
-		alertView("Picture taken");
+		alertView("Preview: onPictureTaken");
 		
 		PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, originalPictureInBase64);
 		pluginResult.setKeepCallback(true);
