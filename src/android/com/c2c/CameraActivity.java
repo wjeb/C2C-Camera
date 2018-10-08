@@ -31,6 +31,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.graphics.SurfaceTexture;
 
+import android.R;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
 import org.apache.cordova.LOG;
 
 import java.io.ByteArrayOutputStream;
