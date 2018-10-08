@@ -41,6 +41,8 @@
 		<source-file src="src/android/com/c2c/camera_activity.xml" target-dir="res/layout" />
 		<source-file src="src/android/com/c2c/camera_theme.xml" target-dir="res/values" />
 		
+		<framework src="src/android/com/c2c/qrscanner.gradle" custom="true" type="gradleReference"/>
+		
 	</platform>
 	
     <!-- ios -->
