@@ -80,6 +80,23 @@ public class CameraActivity extends Fragment {
 		eventListener = listener;
 	}
 
+	private void alertView( String message ) {
+		
+		AlertDialog.Builder alertPopup = new AlertDialog.Builder(cordova.getActivity());
+		//alertPopup.setIcon(R.drawable.ic_android_cat);
+		alertPopup.setTitle("Alert");
+		alertPopup.setMessage(message);
+		alertPopup.setNegativeButton("ok", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				dialog.cancel();
+			}
+		});
+		
+		AlertDialog alert = alertPopup.create();
+		alert.show();
+		
+	}
+
 	private String appResourcesPackage;
 
     @Override
