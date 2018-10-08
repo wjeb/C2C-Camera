@@ -34,6 +34,9 @@ import android.graphics.SurfaceTexture;
 import android.R;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.PluginResult;
 
 import org.apache.cordova.LOG;
 
