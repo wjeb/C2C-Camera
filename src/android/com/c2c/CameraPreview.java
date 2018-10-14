@@ -107,7 +107,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 			//public void barcodeResult(BarcodeResult result) {
 				//alertView(result);
 			//}
-		}
+		};
 		
 		fragment = new CameraActivity();
 		fragment.setEventListener(this);
