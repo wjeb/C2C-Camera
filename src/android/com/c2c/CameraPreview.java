@@ -40,7 +40,8 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	private CameraActivity fragment;
 	private CallbackContext takePictureCallbackContext;
 	
-	private barcodeView;
+	public static CompoundBarcodeView barcodeView;
+	public static BarcodeCallback callback;
 	
 	private int containerViewId = 1;
 	public CameraPreview(){
@@ -144,6 +145,18 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 					fragmentTransaction.add(containerView.getId(), fragment);
 					fragmentTransaction.commit();
 					
+					barcodeView = (CompoundBarcodeView) getView().findViewById(containerViewId);
+					
+					callback = new BarcodeCallback() {
+						@Override
+						public void barcodeResult(BarcodeResult result) {
+							alertView(result);
+						}
+						return view;
+					}
+					
+					barcodeView.decodeContinuous(callback);
+					
 				}
 				catch(Exception e){
 					e.printStackTrace();
@@ -162,15 +175,12 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 			return false;
 		}
 		
-		// Set the BarcodeView
-		barcodeView = (CompoundBarcodeView) getView().findViewById(containerViewId);
-		barcodeView.decodeContinuous(alertView);
-		
 		alertView("Preview: takePicture");
 		
-		//PluginResult pluginResult = new PluginResult(PluginResult.Status.OK);
-		//pluginResult.setKeepCallback(true);
-		//callbackContext.sendPluginResult(pluginResult);
+		PluginResult pluginResult = new PluginResult(PluginResult.Status.OK);
+		pluginResult.setKeepCallback(true);
+		
+		callbackContext.sendPluginResult(pluginResult);
 		
 		try {
 			fragment.takePicture();
