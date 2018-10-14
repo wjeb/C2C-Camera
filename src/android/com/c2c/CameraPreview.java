@@ -40,7 +40,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	private CameraActivity fragment;
 	private CallbackContext takePictureCallbackContext;
 	
-	public static CompoundBarcodeView barcodeView;
+	public static BarcodeView barcodeView;
 	public static BarcodeCallback callback;
 	
 	private int containerViewId = 1;
@@ -152,7 +152,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 					fragmentTransaction.add(containerView.getId(), fragment);
 					fragmentTransaction.commit();
 					
-					//barcodeView = (CompoundBarcodeView) getView().findViewById(containerViewId);
+					//barcodeView = (BarcodeView) getView().findViewById(containerViewId);
 					//barcodeView.decodeContinuous(callback);
 					
 				}
