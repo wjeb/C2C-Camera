@@ -157,16 +157,19 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
 		Log.d("warn","Picture taken...");
 		
-		alertView("Preview: takePicture");
-		
 		if(fragment == null){
 			return false;
 		}
 		
-		PluginResult pluginResult = new PluginResult(PluginResult.Status.OK);
-		pluginResult.setKeepCallback(true);
+		// Set the BarcodeView
+		barcodeView = (CompoundBarcodeView) getView().findViewById(containerViewId);
+		barcodeView.decodeContinuous(alertView);
 		
-		callbackContext.sendPluginResult(pluginResult);
+		alertView("Preview: takePicture");
+		
+		//PluginResult pluginResult = new PluginResult(PluginResult.Status.OK);
+		//pluginResult.setKeepCallback(true);
+		//callbackContext.sendPluginResult(pluginResult);
 		
 		try {
 			fragment.takePicture();
@@ -178,7 +181,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
 		return true;
 	}
-
+	
 	public void onPictureTaken(String originalPictureInBase64){
 		
 		alertView("Preview: onPictureTaken");
