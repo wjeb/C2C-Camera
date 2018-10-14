@@ -152,7 +152,8 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 					fragmentTransaction.add(containerView.getId(), fragment);
 					fragmentTransaction.commit();
 					
-					barcodeView = (BarcodeView) getView().findViewById(containerViewId);
+					//barcodeView = (BarcodeView) webView.getView().findViewById(containerViewId);
+					barcodeView = (BarcodeView) containerView;
 					//barcodeView.decodeContinuous(callback);
 					
 				}
