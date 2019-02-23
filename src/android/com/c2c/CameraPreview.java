@@ -41,7 +41,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	private CallbackContext takePictureCallbackContext;
 	
 	private BarcodeView barcodeView;
-	private BarcodeCallback barcodeCallback;
 	
 	private int containerViewId = 1;
 	public CameraPreview(){
@@ -94,6 +93,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 
     private BarcodeCallback barcodeCallback = new BarcodeCallback() {
         
+		/*
 		@Override
         public void barcodeResult(BarcodeResult result) {
             if (result.getText() != null) {
@@ -103,7 +103,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
             }
         }
 		
-		/*
         @Override
         public void possibleResultPoints(List<ResultPoint> resultPoints) {
         }
