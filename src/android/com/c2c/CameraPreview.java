@@ -92,6 +92,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
 	}
 
+	@Override
 	private BarcodeCallback callback = new BarcodeCallback() {
         
 		@Override
