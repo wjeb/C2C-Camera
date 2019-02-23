@@ -40,7 +40,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	private CameraActivity fragment;
 	private CallbackContext takePictureCallbackContext;
 	
-	public static BarcodeView barcodeView;
+	//public static BarcodeView barcodeView;
 	//public static BarcodeCallback callback;
 	
 	private int containerViewId = 1;
