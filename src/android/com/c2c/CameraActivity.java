@@ -371,7 +371,6 @@ public class CameraActivity extends Fragment {
 			
 			eventListener.onPreviewTaken('Preview result');
 			
-			
 			//mCamera.takePicture(null, null, CameraJPEGCallback);
 			//mCamera.autoFocus(CameraAutoFocusCallback);
 			
