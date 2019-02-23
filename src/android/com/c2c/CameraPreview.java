@@ -41,7 +41,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	private CallbackContext takePictureCallbackContext;
 	
 	public static BarcodeView barcodeView;
-	public static BarcodeCallback callback;
+	//public static BarcodeCallback callback;
 	
 	private int containerViewId = 1;
 	public CameraPreview(){
@@ -92,6 +92,40 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
 	}
 
+	private BarcodeCallback callback = new BarcodeCallback() {
+        
+		@Override
+        public void barcodeResult(BarcodeResult result) {
+            if (result.getText() != null) {
+				
+				alertView(result.getText());
+				
+               // TextView tvMessage = (TextView) findViewById(R.id.tvMessage);
+				//if (tvMessage != null) {
+                //        tvMessage.setText(R.string.registered_yay);
+                //   }
+                //   barcodeView.decodeSingle(callback);
+				//   
+               // }
+                //else {
+               //     if (tvMessage != null) {
+                //        tvMessage.setText(R.string.error_registering);
+				//		
+                //    }
+                //    barcodeView.decodeSingle(callback);
+                //}
+				
+            }
+        }
+		
+        @Override
+        public void possibleResultPoints(List<ResultPoint> resultPoints) {
+			
+		}
+		
+    };
+
+
 	private boolean startCamera(final JSONArray args, CallbackContext callbackContext) {
 		
 		Log.d(TAG, "LOL: startCamera function");
@@ -101,13 +135,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		if(fragment != null){
 			return false;
 		}
-		
-		callback = new BarcodeCallback() {
-			@Override
-			public void barcodeResult(BarcodeResult result) {
-				//alertView(result);
-			}
-		};
 		
 		fragment = new CameraActivity();
 		fragment.setEventListener(this);
