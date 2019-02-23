@@ -31,14 +31,17 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 
 	private final String TAG = "CameraPreview";
 	private final String setOnPictureTakenHandlerAction = "setOnPictureTakenHandler";
+	private final String setOnPreviewTakenHandlerAction = "setOnPreviewTakenHandler";
 	private final String startCameraAction = "startCamera";
 	private final String stopCameraAction = "stopCamera";
 	private final String takePictureAction = "takePicture";
+	private final String takePreviewAction = "takePreview";
 	private final String showCameraAction = "showCamera";
 	private final String hideCameraAction = "hideCamera";
 
 	private CameraActivity fragment;
 	private CallbackContext takePictureCallbackContext;
+	private CallbackContext takePreviewCallbackContext;
 	
 	private BarcodeView barcodeView;
 	
@@ -71,11 +74,17 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		if (setOnPictureTakenHandlerAction.equals(action)){
 			return setOnPictureTakenHandler(args, callbackContext);
 		}
+		else if (setOnPreviewTakenHandlerAction.equals(action)){
+			return setOnPreviewTakenHandler(args, callbackContext);
+		}
 		else if (startCameraAction.equals(action)){
 			return startCamera(args, callbackContext);
 		}
 		else if (takePictureAction.equals(action)){
 			return takePicture(args, callbackContext);
+		}
+		else if (takePreviewAction.equals(action)){
+			return takePreview(args, callbackContext);
 		}
 		else if (stopCameraAction.equals(action)){
 			return stopCamera(args, callbackContext);
@@ -156,6 +165,32 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		return true;
 	}
 	
+	private boolean takePreview(final JSONArray args, CallbackContext callbackContext) {
+		
+		Log.d("warn","Picture taken...");
+		
+		if(fragment == null){
+			return false;
+		}
+		
+		alertView("Preview: takePreview");
+		
+		PluginResult pluginResult = new PluginResult(PluginResult.Status.OK);
+		pluginResult.setKeepCallback(true);
+		
+		callbackContext.sendPluginResult(pluginResult);
+		
+		try {
+			fragment.takePreview();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+	}
+	
 	private boolean takePicture(final JSONArray args, CallbackContext callbackContext) {
 		
 		Log.d("warn","Picture taken...");
@@ -172,8 +207,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		callbackContext.sendPluginResult(pluginResult);
 		
 		try {
-			fragment.getPreviewPicture();
-			//fragment.takePicture();
+			fragment.takePicture();
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -191,6 +225,17 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		pluginResult.setKeepCallback(true);
 		
 		takePictureCallbackContext.sendPluginResult(pluginResult);
+		
+	}
+	
+	public void onPreviewTaken(String previewPictureInBase64){
+		
+		alertView("Preview: onPreviewTaken");
+		
+		PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, previewPictureInBase64);
+		pluginResult.setKeepCallback(true);
+		
+		takePreviewCallbackContext.sendPluginResult(pluginResult);
 		
 	}
 
@@ -241,6 +286,15 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		fragmentTransaction.commit();
 		
 		return true;
+	}
+	
+	private boolean setOnPreviewTakenHandler(JSONArray args, CallbackContext callbackContext) {
+		
+		Log.d(TAG, "setOnPreviewTakenHandler");
+		
+		takePreviewCallbackContext = callbackContext;
+		return true;
+		
 	}
 	
 	private boolean setOnPictureTakenHandler(JSONArray args, CallbackContext callbackContext) {

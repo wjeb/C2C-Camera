@@ -62,6 +62,7 @@ public class CameraActivity extends Fragment {
 
 	private Preview mPreview;
 	private boolean canTakePicture = true;
+	private boolean canTakePreview = true;
 
 	private View view;
 	private Camera.Parameters cameraParameters = null;
@@ -356,34 +357,35 @@ public class CameraActivity extends Fragment {
 			camera.startPreview();
 			
 			canTakePicture = true;
+			canTakePreview = true;
 			
 		}
 	};
 
 
-	public void getPreviewPicture(){
+	public void takePreview(){
 		
-		alertView("CameraActivity: getPreviewPicture");
+		alertView("CameraActivity: takePreview");
 		
-		
-		/*
 		if(mPreview != null){
 			
-			mCamera.takePicture(null, null, CameraJPEGCallback);
+			eventListener.onPreviewTaken('Preview result');
+			
+			
+			//mCamera.takePicture(null, null, CameraJPEGCallback);
 			//mCamera.autoFocus(CameraAutoFocusCallback);
 			
-			if(!canTakePicture){
+			if(!canTakePreview){
 				return;
 			}else{
-				canTakePicture = false;
+				canTakePreview = false;
 			}
 			
 		}else{
 			
-			canTakePicture = true;
+			canTakePreview = true;
 			
 		}
-		*/
 		
 	}
 
