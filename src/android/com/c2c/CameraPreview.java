@@ -91,57 +91,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
 	}
 
-    private BarcodeCallback barcodeCallback = new BarcodeCallback() {
-        
-		/*
-		@Override
-        public void barcodeResult(BarcodeResult result) {
-            if (result.getText() != null) {
-				
-				alertView(result.getText());
-				
-            }
-        }
-		
-        @Override
-        public void possibleResultPoints(List<ResultPoint> resultPoints) {
-        }
-		*/
-		
-    };
-
-	/*
-	@Override
-	private BarcodeCallback callback = new BarcodeCallback() {
-        
-		@Override
-        public void barcodeResult(BarcodeResult result) {
-            if (result.getText() != null) {
-				
-				alertView(result.getText());
-				
-               // TextView tvMessage = (TextView) findViewById(R.id.tvMessage);
-				//if (tvMessage != null) {
-                //        tvMessage.setText(R.string.registered_yay);
-                //   }
-                //   barcodeView.decodeSingle(callback);
-				//   
-               // }
-                //else {
-               //     if (tvMessage != null) {
-                //        tvMessage.setText(R.string.error_registering);
-				//		
-                //    }
-                //    barcodeView.decodeSingle(callback);
-                //}
-				
-            }
-        }
-		
-    };
-	*/
-
-
 	private boolean startCamera(final JSONArray args, CallbackContext callbackContext) {
 		
 		Log.d(TAG, "LOL: startCamera function");
@@ -183,8 +132,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 						FrameLayout.LayoutParams containerLayoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
 						cordova.getActivity().addContentView(containerView, containerLayoutParams);
 						
-						barcodeView = (BarcodeView) (FrameLayout)cordova.getActivity().findViewById(containerViewId);
-						
 					}
 					
 					//display camera bellow the webview
@@ -197,9 +144,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 					fragmentTransaction.add(containerView.getId(), fragment);
 					fragmentTransaction.commit();
 					
-					//barcodeView = (BarcodeView) webView.getView().findViewById(containerViewId);
-					//barcodeView = (BarcodeView) containerView;
-					//barcodeView.decodeContinuous(callback);
+					barcodeView = (BarcodeView) (FrameLayout)cordova.getActivity().findViewById(containerViewId);
 					
 				}
 				catch(Exception e){
@@ -215,7 +160,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
 		Log.d("warn","Picture taken...");
 		
-		barcodeView.decodeSingle(callback);
+		//barcodeView.decodeSingle(callback);
 		
 		
 		/*
