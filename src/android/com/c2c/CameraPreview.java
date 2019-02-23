@@ -27,34 +27,6 @@ import android.R;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
-private BarcodeCallback callback = new BarcodeCallback() {
-	
-	@Override
-	public void barcodeResult(BarcodeResult result) {
-		if (result.getText() != null) {
-			
-			alertView(result.getText());
-			
-		   // TextView tvMessage = (TextView) findViewById(R.id.tvMessage);
-			//if (tvMessage != null) {
-			//        tvMessage.setText(R.string.registered_yay);
-			//   }
-			//   barcodeView.decodeSingle(callback);
-			//   
-		   // }
-			//else {
-		   //     if (tvMessage != null) {
-			//        tvMessage.setText(R.string.error_registering);
-			//		
-			//    }
-			//    barcodeView.decodeSingle(callback);
-			//}
-			
-		}
-	}
-	
-};
-
 public class CameraPreview extends CordovaPlugin implements CameraActivity.CameraPreviewListener {
 
 	private final String TAG = "CameraPreview";
@@ -68,8 +40,8 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	private CameraActivity fragment;
 	private CallbackContext takePictureCallbackContext;
 	
-	//public static BarcodeView barcodeView;
-	//public static BarcodeCallback callback;
+	private BarcodeView barcodeView;
+	private BarcodeCallback barcodeCallback;
 	
 	private int containerViewId = 1;
 	public CameraPreview(){
@@ -119,6 +91,38 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		return false;
 		
 	}
+
+	/*
+	@Override
+	private BarcodeCallback callback = new BarcodeCallback() {
+        
+		@Override
+        public void barcodeResult(BarcodeResult result) {
+            if (result.getText() != null) {
+				
+				alertView(result.getText());
+				
+               // TextView tvMessage = (TextView) findViewById(R.id.tvMessage);
+				//if (tvMessage != null) {
+                //        tvMessage.setText(R.string.registered_yay);
+                //   }
+                //   barcodeView.decodeSingle(callback);
+				//   
+               // }
+                //else {
+               //     if (tvMessage != null) {
+                //        tvMessage.setText(R.string.error_registering);
+				//		
+                //    }
+                //    barcodeView.decodeSingle(callback);
+                //}
+				
+            }
+        }
+		
+    };
+	*/
+
 
 	private boolean startCamera(final JSONArray args, CallbackContext callbackContext) {
 		
