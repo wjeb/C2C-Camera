@@ -71,6 +71,9 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		
+		alertView("Preview: Execute");
+		alertView(setOnPictureTakenHandlerAction);
+		
 		if (setOnPictureTakenHandlerAction.equals(action)){
 			return setOnPictureTakenHandler(args, callbackContext);
 		}
@@ -95,6 +98,8 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		else if (showCameraAction.equals(action)){
 			return showCamera(args, callbackContext);
 		}
+		
+		alertView("Preview: Action not found");
 		
 		return false;
 		
