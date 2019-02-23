@@ -291,7 +291,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	private boolean setOnPreviewTakenHandler(JSONArray args, CallbackContext callbackContext) {
 		
 		alertView("Preview: setOnPreviewTakenHandler 1");
-		alertView(callbackContext);
 		
 		Log.d(TAG, "setOnPreviewTakenHandler");
 		
@@ -307,7 +306,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	private boolean setOnPictureTakenHandler(JSONArray args, CallbackContext callbackContext) {
 		
 		alertView("Preview: setOnPictureTakenHandler 1");
-		alertView(callbackContext);
 		
 		Log.d(TAG, "setOnPictureTakenHandler");
 		
