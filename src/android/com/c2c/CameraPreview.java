@@ -102,12 +102,12 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 			return false;
 		}
 		
-		//callback = new BarcodeCallback() {
-			//@Override
-			//public void barcodeResult(BarcodeResult result) {
+		callback = new BarcodeCallback() {
+			@Override
+			public void barcodeResult(BarcodeResult result) {
 				//alertView(result);
-			//}
-		//};
+			}
+		};
 		
 		fragment = new CameraActivity();
 		fragment.setEventListener(this);
