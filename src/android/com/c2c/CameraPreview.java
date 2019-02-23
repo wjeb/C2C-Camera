@@ -137,6 +137,9 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		fragment = new CameraActivity();
 		fragment.setEventListener(this);
 		
+		
+		//barcodeView.decodeSingle(callback);
+		
 		cordova.getActivity().runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
@@ -164,6 +167,8 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 						
 						FrameLayout.LayoutParams containerLayoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
 						cordova.getActivity().addContentView(containerView, containerLayoutParams);
+						
+						barcodeView = (BarcodeView) (FrameLayout)cordova.getActivity().findViewById(containerViewId);
 						
 					}
 					
