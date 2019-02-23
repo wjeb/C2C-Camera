@@ -120,7 +120,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
         //@Override
         //public void possibleResultPoints(List<ResultPoint> resultPoints) {
-		//	
+		//	 
 		//}
 		
     };
