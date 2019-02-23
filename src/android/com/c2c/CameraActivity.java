@@ -361,6 +361,32 @@ public class CameraActivity extends Fragment {
 	};
 
 
+	public void getPreviewPicture(){
+		
+		alertView("CameraActivity: getPreviewPicture");
+		
+		
+		/*
+		if(mPreview != null){
+			
+			mCamera.takePicture(null, null, CameraJPEGCallback);
+			//mCamera.autoFocus(CameraAutoFocusCallback);
+			
+			if(!canTakePicture){
+				return;
+			}else{
+				canTakePicture = false;
+			}
+			
+		}else{
+			
+			canTakePicture = true;
+			
+		}
+		*/
+		
+	}
+
 	public void takePicture(){
 		
 		alertView("CameraActivity: takePicture");

@@ -144,7 +144,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 					fragmentTransaction.add(containerView.getId(), fragment);
 					fragmentTransaction.commit();
 					
-					barcodeView = (BarcodeView) (FrameLayout)cordova.getActivity().findViewById(containerViewId);
+					//barcodeView = (BarcodeView) (FrameLayout)cordova.getActivity().findViewById(containerViewId);
 					
 				}
 				catch(Exception e){
@@ -160,10 +160,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
 		Log.d("warn","Picture taken...");
 		
-		//barcodeView.decodeSingle(callback);
-		
-		
-		/*
 		if(fragment == null){
 			return false;
 		}
@@ -176,13 +172,13 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		callbackContext.sendPluginResult(pluginResult);
 		
 		try {
-			fragment.takePicture();
+			fragment.getPreviewPicture();
+			//fragment.takePicture();
 		}
 		catch(Exception e){
 			e.printStackTrace();
 			return false;
 		}
-		*/
 		
 		return true;
 	}
