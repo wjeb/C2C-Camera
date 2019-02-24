@@ -372,7 +372,7 @@ public class CameraActivity extends Fragment {
 			final byte[] data;
 			//final Camera camera;
 			
-			byte[] bytes = mPreview.getFramePicture(data, camera);
+			byte[] bytes = mPreview.getFramePicture(data, mCamera);
 			String originalPictureInBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
 			
 			eventListener.onPreviewTaken(originalPictureInBase64);
