@@ -847,16 +847,18 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 			int w = parameters.getPreviewSize().width;
             int h = parameters.getPreviewSize().height;
 			
-			/*
             // Get the YuV image
             YuvImage yuvImage = new YuvImage(data, format, w, h, null);
             
 			// Convert YuV to Jpeg
             Rect rect = new Rect(0, 0, w, h);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            yuvImage.compressToJpeg(rect, 50, outputStream);
-            */
+            yuvImage.compressToJpeg(rect, 100, outputStream);
+            
+			return outputStream.toByteArray();
 			
+			
+			/*
 			//---------------- TEST ---------------|
 				
 				final Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length);
@@ -916,6 +918,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				return stream.toByteArray();
 				
 			//---------------- TEST ---------------|
+			*/
 			
 			//return outputStream.toByteArray();
 			
