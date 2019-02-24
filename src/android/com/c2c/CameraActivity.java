@@ -305,7 +305,7 @@ public class CameraActivity extends Fragment {
 			eventListener.onPreviewTaken(previewPictureInBase64);
 			
 		}
-	}
+	};
 	
 	Camera.PictureCallback CameraJPEGCallback = new Camera.PictureCallback() {
 		public void onPictureTaken(byte[] data, Camera camera) {
