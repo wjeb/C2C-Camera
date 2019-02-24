@@ -859,6 +859,15 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 			
 			Bitmap pic = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
 				
+				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+				pic.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
+				
+			return outputStream.toByteArray();
+			
+			
+			/*
+			Bitmap pic = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+				
 				final Matrix matrix = new Matrix();
 					
 					if(fragment.cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
@@ -875,6 +884,8 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				portraitPicture.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
 				
 			return outputStream.toByteArray();
+			*/
+			
 			
 			
 			/*
