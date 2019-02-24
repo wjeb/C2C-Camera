@@ -296,6 +296,17 @@ public class CameraActivity extends Fragment {
 		
 	};
 	
+	Camera.PreviewCallback CameraPreviewCallback = new Camera.PreviewCallback() {
+		public void onPreviewFrame(byte[] data, Camera camera) {
+			
+			byte[] bytes = mPreview.getFramePicture(data, camera);
+			String previewPictureInBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
+			
+			eventListener.onPreviewTaken(previewPictureInBase64);
+			
+		}
+	}
+	
 	Camera.PictureCallback CameraJPEGCallback = new Camera.PictureCallback() {
 		public void onPictureTaken(byte[] data, Camera camera) {
 			
@@ -369,15 +380,16 @@ public class CameraActivity extends Fragment {
 		
 		if(mPreview != null){
 			
-			byte[] data;
-			//final Camera camera;
+			mCamera.takePicture(null, null, CameraPreviewCallback);
 			
+			
+			/*
 			byte[] bytes = mPreview.getFramePicture(data, mCamera);
-			String originalPictureInBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
+			
+			//String originalPictureInBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
 			
 			eventListener.onPreviewTaken(originalPictureInBase64);
 			
-			/*
 			Camera.Parameters parameters = camera.getParameters();
 			
 			int format = parameters.getPreviewFormat();
