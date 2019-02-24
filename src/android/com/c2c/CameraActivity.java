@@ -64,6 +64,7 @@ public class CameraActivity extends Fragment {
 	public Preview mPreview;
 	private boolean canTakePicture = true;
 	private boolean canTakePreview = false;
+	private boolean setPreviewCallback = false;
 
 	private View view;
 	private Camera.Parameters cameraParameters = null;
@@ -386,7 +387,11 @@ public class CameraActivity extends Fragment {
 		if(mPreview != null){
 			
 			canTakePreview = true;
-			mCamera.setPreviewCallback(CameraPreviewCallback);
+			
+			if(!setPreviewCallback){
+				setPreviewCallback = true;
+				mCamera.setPreviewCallback(CameraPreviewCallback);
+			}
 			
 		}
 		
