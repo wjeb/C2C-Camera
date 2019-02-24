@@ -855,7 +855,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				Rect rect = new Rect(0, 0, w, h);
 				
 				ByteArrayOutputStream yuvOutputStream = new ByteArrayOutputStream();
-				yuvImage.compressToJpeg(rect, 100, yuvOutputStream);
+				yuvImage.compressToJpeg(rect, 60, yuvOutputStream);
 				
 				byte[] imageBytes = yuvOutputStream.toByteArray();
 				
@@ -884,7 +884,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				double leftMargin = Math.round( ((double)portraitPicture.getWidth() - picWidth) / 2 );
 				double topMargin = Math.round( ((double)portraitPicture.getHeight() - picHeight) / 2 );
 				
-				int widthPercent = 40;
+				int widthPercent = 30;
 				int boxSideSize = (int) Math.round(picWidth / 100 * widthPercent);
 				
 				leftMargin = leftMargin + ((picWidth - boxSideSize) / 2);
@@ -897,110 +897,9 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 			Bitmap centralSquare = Bitmap.createBitmap(portraitPicture, (int)leftMargin, (int)topMargin, (int)picWidth, (int)picHeight);
 				
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
-				centralSquare.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+				centralSquare.compress(Bitmap.CompressFormat.JPEG, 60, stream);
 				
 			return stream.toByteArray();
-			
-			
-			/*
-			final Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length);
-				
-				final Matrix matrix = new Matrix();
-					
-					if(fragment.cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-						Log.d(TAG, "LOL: mirror y axis");
-						matrix.preScale(-1.0f, 1.0f);
-					}
-					
-				matrix.postRotate(fragment.mPreview.getDisplayOrientation());
-				
-			
-			final Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length);
-				
-				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-				pic.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-				
-				
-				
-			return outputStream.toByteArray();
-			*/
-			
-			/*
-            // Get the YuV image
-            YuvImage yuvImage = new YuvImage(data, format, w, h, null);
-            
-			// Convert YuV to Jpeg
-            Rect rect = new Rect(0, 0, w, h);
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            yuvImage.compressToJpeg(rect, 100, outputStream);
-            
-			return outputStream.toByteArray();
-			*/
-			
-			
-			/*
-			//---------------- TEST ---------------|
-				
-				final Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length);
-					
-					final Matrix matrix = new Matrix();
-						
-						if(fragment.cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-							Log.d(TAG, "LOL: mirror y axis");
-							matrix.preScale(-1.0f, 1.0f);
-						}
-						
-					matrix.postRotate(fragment.mPreview.getDisplayOrientation());
-					
-				
-				Bitmap portraitPicture = Bitmap.createBitmap(pic, 0, 0, (int)(pic.getWidth()), (int)(pic.getHeight()), matrix, false);
-					
-					double displayW = (double) fragment.width/fragment.height;
-					double displayH = (double) fragment.height/fragment.width;
-					
-					double picW = (double) portraitPicture.getWidth()/portraitPicture.getHeight();
-					double picH = (double) portraitPicture.getHeight()/portraitPicture.getWidth();
-					
-					double picWidth = 0;
-					double picHeight = 0;
-					
-					if(displayW<=picW){
-						picHeight = portraitPicture.getHeight();
-						picWidth = Math.round(picHeight * displayW);
-					}else{
-						picWidth = portraitPicture.getWidth();
-						picHeight = Math.round(picWidth * displayH);
-					}
-					
-					double leftMargin = Math.round( ((double)portraitPicture.getWidth() - picWidth) / 2 );
-					double topMargin = Math.round( ((double)portraitPicture.getHeight() - picHeight) / 2 );
-					
-					//eventListener.onPictureTaken("alert:Display: "+width+"x"+height+"\nPicture: "+portraitPicture.getWidth()+"x"+portraitPicture.getHeight()+"\nResult: "+picWidth+"x"+picHeight);
-					
-					int widthPercent = 40;
-					int boxSideSize = (int) Math.round(picWidth / 100 * widthPercent);
-					
-					leftMargin = leftMargin + ((picWidth - boxSideSize) / 2);
-					topMargin = topMargin + ((picHeight - boxSideSize) / 2);
-					
-					picWidth = boxSideSize;
-					picHeight = boxSideSize;
-					
-				
-				Bitmap centralSquare = Bitmap.createBitmap(portraitPicture, (int)leftMargin, (int)topMargin, (int)picWidth, (int)picHeight);
-					
-					ByteArrayOutputStream stream = new ByteArrayOutputStream();
-					centralSquare.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-					
-					//byte[] attachmentBytes = stream.toByteArray();
-					//String originalPictureInBase64 = Base64.encodeToString(attachmentBytes, Base64.DEFAULT);
-					
-				return stream.toByteArray();
-				
-			//---------------- TEST ---------------|
-			*/
-			
-			//return outputStream.toByteArray();
 			
         }
 		
