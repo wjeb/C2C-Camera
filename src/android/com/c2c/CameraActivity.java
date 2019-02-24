@@ -142,7 +142,7 @@ public class CameraActivity extends Fragment {
 
 	private void createCameraPreview(){
 		
-		alertView("CameraActivity: createCameraPreview");
+		//alertView("CameraActivity: createCameraPreview");
 		
 		Log.d(TAG, "LOL: createCameraPreview function");
 		
@@ -332,7 +332,7 @@ public class CameraActivity extends Fragment {
 				double leftMargin = Math.round( ((double)portraitPicture.getWidth() - picWidth) / 2 );
 				double topMargin = Math.round( ((double)portraitPicture.getHeight() - picHeight) / 2 );
 				
-				eventListener.onPictureTaken("alert:Display: "+width+"x"+height+"\nPicture: "+portraitPicture.getWidth()+"x"+portraitPicture.getHeight()+"\nResult: "+picWidth+"x"+picHeight);
+				//eventListener.onPictureTaken("alert:Display: "+width+"x"+height+"\nPicture: "+portraitPicture.getWidth()+"x"+portraitPicture.getHeight()+"\nResult: "+picWidth+"x"+picHeight);
 				
 				int widthPercent = 40;
 				int boxSideSize = (int) Math.round(picWidth / 100 * widthPercent);
@@ -369,7 +369,7 @@ public class CameraActivity extends Fragment {
 		
 		if(mPreview != null){
 			
-			//eventListener.onPreviewTaken("Preview result");
+			eventListener.onPreviewTaken("Preview result");
 			
 			//mCamera.takePicture(null, null, CameraJPEGCallback);
 			//mCamera.autoFocus(CameraAutoFocusCallback);

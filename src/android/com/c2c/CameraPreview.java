@@ -71,8 +71,8 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		
-		alertView("Preview: Execute");
-		alertView(setOnPictureTakenHandlerAction);
+		//alertView("Preview: Execute");
+		//alertView(setOnPictureTakenHandlerAction);
 		
 		if (setOnPictureTakenHandlerAction.equals(action)){
 			return setOnPictureTakenHandler(args, callbackContext);
@@ -99,7 +99,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 			return showCamera(args, callbackContext);
 		}
 		
-		alertView("Preview: Action not found");
+		//alertView("Preview: Action not found");
 		
 		return false;
 		
@@ -109,7 +109,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
 		Log.d(TAG, "LOL: startCamera function");
 		
-		alertView("Preview: StartCamera");
+		//alertView("Preview: StartCamera");
 		
 		if(fragment != null){
 			return false;
@@ -178,7 +178,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 			return false;
 		}
 		
-		alertView("Preview: takePreview");
+		//alertView("Preview: takePreview");
 		
 		PluginResult pluginResult = new PluginResult(PluginResult.Status.OK);
 		pluginResult.setKeepCallback(true);
@@ -204,7 +204,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 			return false;
 		}
 		
-		alertView("Preview: takePicture");
+		//alertView("Preview: takePicture");
 		
 		PluginResult pluginResult = new PluginResult(PluginResult.Status.OK);
 		pluginResult.setKeepCallback(true);
@@ -224,7 +224,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	
 	public void onPictureTaken(String originalPictureInBase64){
 		
-		alertView("Preview: onPictureTaken");
+		//alertView("Preview: onPictureTaken");
 		
 		PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, originalPictureInBase64);
 		pluginResult.setKeepCallback(true);
@@ -235,7 +235,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	
 	public void onPreviewTaken(String previewPictureInBase64){
 		
-		alertView("Preview: onPreviewTaken");
+		//alertView("Preview: onPreviewTaken");
 		
 		PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, previewPictureInBase64);
 		pluginResult.setKeepCallback(true);
@@ -295,10 +295,10 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	
 	private boolean setOnPreviewTakenHandler(JSONArray args, CallbackContext callbackContext) {
 		
-		alertView("Preview: setOnPreviewTakenHandler 1");
+		//alertView("Preview: setOnPreviewTakenHandler 1");
 		Log.d(TAG, "setOnPreviewTakenHandler");
 		takePreviewCallbackContext = callbackContext;
-		alertView("Preview: setOnPreviewTakenHandler 2");
+		//alertView("Preview: setOnPreviewTakenHandler 2");
 		
 		return true;
 		
@@ -306,10 +306,10 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 	
 	private boolean setOnPictureTakenHandler(JSONArray args, CallbackContext callbackContext) {
 		
-		alertView("Preview: setOnPictureTakenHandler 1");
+		//alertView("Preview: setOnPictureTakenHandler 1");
 		Log.d(TAG, "setOnPictureTakenHandler");
 		takePictureCallbackContext = callbackContext;
-		alertView("Preview: setOnPictureTakenHandler 2");
+		//alertView("Preview: setOnPictureTakenHandler 2");
 		
 		return true;
 		
