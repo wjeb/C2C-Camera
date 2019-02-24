@@ -867,10 +867,17 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 			
 			Bitmap pic = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
 				
+				/*
 				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 				pic.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
+				*/
 				
 			
+			Bitmap portraitPicture = Bitmap.createBitmap(pic, 0, 0, (int)(pic.getWidth()), (int)(pic.getHeight()), matrix, false);
+				
+				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+				portraitPicture.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+				
 			return outputStream.toByteArray();
 			
 			
