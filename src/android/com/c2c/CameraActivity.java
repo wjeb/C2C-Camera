@@ -861,6 +861,8 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				
 				final Matrix matrix = new Matrix();
 					
+					matrix.preScale(-1.0f, 1.0f);
+					
 					/*
 					if(fragment.cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
 						Log.d(TAG, "LOL: mirror y axis");
