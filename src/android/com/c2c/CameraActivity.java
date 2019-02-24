@@ -385,10 +385,9 @@ public class CameraActivity extends Fragment {
 		
 		if(mPreview != null){
 			
-			mCamera.setPreviewCallback(CameraPreviewCallback);
-			
 			canTakePreview = true;
 			
+			mCamera.setPreviewCallback(CameraPreviewCallback);
 			//mCamera.takePicture(null, null, CameraPreviewCallback);
 			
 			/*
@@ -423,6 +422,16 @@ public class CameraActivity extends Fragment {
 			
 			//mCamera.takePicture(null, null, CameraJPEGCallback);
 			//mCamera.autoFocus(CameraAutoFocusCallback);
+			
+			if(!canTakePreview){
+				return;
+			}else{
+				canTakePreview = false;
+			}
+			
+		}else{
+			
+			canTakePreview = true;
 			
 		}
 		
@@ -568,10 +577,11 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 					
 				
 			mCamera.setParameters(params);
+			
 			mSupportedPreviewSizes = mCamera.getParameters().getSupportedPreviewSizes();
 			
 			setCameraDisplayOrientation();
-			
+		  
         }
 		
     }
