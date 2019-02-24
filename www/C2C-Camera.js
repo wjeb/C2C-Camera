@@ -11,6 +11,10 @@
 			exec(onPictureTaken, onPictureTaken, PLUGIN_NAME, "setOnPictureTakenHandler", []);
 		};
 		
+		CameraPreview.setOnPreviewTakenHandler = function(onPreviewTaken) {
+			exec(onPreviewTaken, onPreviewTaken, PLUGIN_NAME, "setOnPreviewTakenHandler", []);
+		};
+		
 		CameraPreview.startCamera = function(rect, defaultCamera, tapEnabled, dragEnabled, toBack, alpha) {
 			if (typeof(alpha) === 'undefined') alpha = 1;
 			exec(null, null, PLUGIN_NAME, "startCamera", [rect.x, rect.y, rect.width, rect.height, defaultCamera, !!tapEnabled, !!dragEnabled, !!toBack, alpha]);
