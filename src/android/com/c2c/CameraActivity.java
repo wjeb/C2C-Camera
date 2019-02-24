@@ -61,7 +61,7 @@ public class CameraActivity extends Fragment {
 	public FrameLayout mainLayout;
 	public FrameLayout frameContainerLayout;
 
-	private Preview mPreview;
+	public Preview mPreview;
 	private boolean canTakePicture = true;
 	private boolean canTakePreview = false;
 
@@ -69,7 +69,7 @@ public class CameraActivity extends Fragment {
 	private Camera.Parameters cameraParameters = null;
 	private Camera mCamera;
 	private int numberOfCameras;
-	private int cameraCurrentlyLocked = -1;
+	public int cameraCurrentlyLocked = -1;
 
 	// The first rear facing camera
 	private int defaultCameraId;
@@ -437,6 +437,7 @@ public class CameraActivity extends Fragment {
 class Preview extends RelativeLayout implements SurfaceHolder.Callback {
     
 	private final String TAG = "Preview";
+	private CameraActivity fragment;
 
     CustomSurfaceView mSurfaceView;
     SurfaceHolder mHolder;
@@ -862,12 +863,14 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 					
 					final Matrix matrix = new Matrix();
 						
-						if(cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+						
+						if(fragment.cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
 							Log.d(TAG, "LOL: mirror y axis");
 							matrix.preScale(-1.0f, 1.0f);
 						}
 						
-					matrix.postRotate(mPreview.getDisplayOrientation());
+						
+					matrix.postRotate(fragment.mPreview.getDisplayOrientation());
 					
 				
 				
