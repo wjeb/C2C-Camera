@@ -28,6 +28,10 @@
 			exec(null, null, PLUGIN_NAME, "takePicture", [0, 0]);
 		};
 		
+		CameraPreview.takePreview = function(size) {
+			exec(null, null, PLUGIN_NAME, "takePreview", [0, 0]);
+		};
+		
 		CameraPreview.hide = function() {
 			exec(null, null, PLUGIN_NAME, "hideCamera", []);
 		};
