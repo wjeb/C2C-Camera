@@ -847,6 +847,9 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 			int w = parameters.getPreviewSize().width;
             int h = parameters.getPreviewSize().height;
 			
+			final Matrix matrix = new Matrix();
+			matrix.postRotate(getDisplayOrientation());
+			
 			YuvImage yuvImage = new YuvImage(data, format, w, h, null);
 				
 				Rect rect = new Rect(0, 0, w, h);
@@ -858,18 +861,6 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				
 			
 			final Bitmap pic = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-				
-				
-				final Matrix matrix = new Matrix();
-					
-					/*
-					if(fragment.cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-						matrix.preScale(-1.0f, 1.0f);
-					}
-					*/
-					
-				matrix.postRotate(getDisplayOrientation());
-				
 			
 			Bitmap portraitPicture = Bitmap.createBitmap(pic, 0, 0, (int)(pic.getWidth()), (int)(pic.getHeight()), matrix, false);
 				
@@ -878,27 +869,6 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				
 			return stream.toByteArray();
 			
-			
-			/*
-			Bitmap pic = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-				
-				final Matrix matrix = new Matrix();
-					
-					if(fragment.cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-						Log.d(TAG, "LOL: mirror y axis");
-						matrix.preScale(-1.0f, 1.0f);
-					}
-					
-				matrix.postRotate(getDisplayOrientation());
-				
-			
-			Bitmap portraitPicture = Bitmap.createBitmap(pic, 0, 0, (int)(pic.getWidth()), (int)(pic.getHeight()), matrix, false);
-				
-				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-				portraitPicture.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
-				
-			return outputStream.toByteArray();
-			*/
 			
 			
 			
