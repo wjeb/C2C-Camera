@@ -63,7 +63,7 @@ public class CameraActivity extends Fragment {
 
 	private Preview mPreview;
 	private boolean canTakePicture = true;
-	private boolean canTakePreview = true;
+	private boolean canTakePreview = false;
 
 	private View view;
 	private Camera.Parameters cameraParameters = null;
@@ -299,10 +299,16 @@ public class CameraActivity extends Fragment {
 	Camera.PreviewCallback CameraPreviewCallback = new Camera.PreviewCallback() {
 		public void onPreviewFrame(byte[] data, Camera camera) {
 			
-			byte[] bytes = mPreview.getFramePicture(data, camera);
-			String previewPictureInBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
-			
-			eventListener.onPreviewTaken(previewPictureInBase64);
+			if(canTakePreview){
+				
+				byte[] bytes = mPreview.getFramePicture(data, camera);
+				String previewPictureInBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
+				
+				eventListener.onPreviewTaken(previewPictureInBase64);
+				
+				canTakePreview = false;
+				
+			}
 			
 		}
 	};
@@ -369,7 +375,6 @@ public class CameraActivity extends Fragment {
 			camera.startPreview();
 			
 			canTakePicture = true;
-			canTakePreview = true;
 			
 		}
 	};
@@ -380,7 +385,8 @@ public class CameraActivity extends Fragment {
 		
 		if(mPreview != null){
 			
-			mCamera.setPreviewCallback(CameraPreviewCallback);
+			canTakePreview = true;
+			
 			//mCamera.takePicture(null, null, CameraPreviewCallback);
 			
 			/*
@@ -570,11 +576,12 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 					
 				
 			mCamera.setParameters(params);
+			mCamera.setPreviewCallback(CameraPreviewCallback);
 			
 			mSupportedPreviewSizes = mCamera.getParameters().getSupportedPreviewSizes();
 			
 			setCameraDisplayOrientation();
-		  
+			
         }
 		
     }
