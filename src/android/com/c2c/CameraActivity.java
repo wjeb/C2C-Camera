@@ -873,7 +873,6 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				double picWidth = 0;
 				double picHeight = 0;
 				
-				/*
 				if(displayW<=picW){
 					picHeight = portraitPicture.getHeight();
 					picWidth = Math.round(picHeight * displayW);
@@ -881,7 +880,6 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 					picWidth = portraitPicture.getWidth();
 					picHeight = Math.round(picWidth * displayH);
 				}
-				*/
 				
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
 				portraitPicture.compress(Bitmap.CompressFormat.JPEG, 100, stream);
