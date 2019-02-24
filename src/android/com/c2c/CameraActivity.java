@@ -369,8 +369,12 @@ public class CameraActivity extends Fragment {
 		
 		if(mPreview != null){
 			
-			eventListener.onPreviewTaken("Preview result");
+			byte[] bytes = mPreview.getFramePicture(data, camera);
+			String originalPictureInBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
 			
+			eventListener.onPreviewTaken(originalPictureInBase64);
+			
+			/*
 			Camera.Parameters parameters = camera.getParameters();
 			
 			int format = parameters.getPreviewFormat();
@@ -392,6 +396,7 @@ public class CameraActivity extends Fragment {
 				eventListener.onPreviewTaken(outputStream.toByteArray());
 				
 			}
+			*/
 			
 			//mCamera.takePicture(null, null, CameraJPEGCallback);
 			//mCamera.autoFocus(CameraAutoFocusCallback);
@@ -868,7 +873,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 			// Convert YuV to Jpeg
             Rect rect = new Rect(0, 0, w, h);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            yuvImage.compressToJpeg(rect, 100, outputStream);
+            yuvImage.compressToJpeg(rect, 80, outputStream);
             
 			return outputStream.toByteArray();
 			
