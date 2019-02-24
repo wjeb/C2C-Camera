@@ -301,8 +301,6 @@ public class CameraActivity extends Fragment {
 			
 			if(canTakePreview){
 				
-				//
-				
 				byte[] bytes = mPreview.getFramePicture(data, camera);
 				String previewPictureInBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
 				
