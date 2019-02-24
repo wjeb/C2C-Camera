@@ -851,10 +851,10 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				
 				Rect rect = new Rect(0, 0, w, h);
 				
-				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-				yuvImage.compressToJpeg(rect, 100, outputStream);
+				ByteArrayOutputStream yuvOutputStream = new ByteArrayOutputStream();
+				yuvImage.compressToJpeg(rect, 100, yuvOutputStream);
 				
-				byte[] imageBytes = outputStream.toByteArray();
+				byte[] imageBytes = yuvOutputStream.toByteArray();
 				
 			
 			Bitmap pic = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
