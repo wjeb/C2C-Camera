@@ -380,8 +380,8 @@ public class CameraActivity extends Fragment {
 		
 		if(mPreview != null){
 			
-			mCamera.takePicture(null, null, CameraPreviewCallback);
-			
+			mCamera.setPreviewCallback(CameraPreviewCallback);
+			//mCamera.takePicture(null, null, CameraPreviewCallback);
 			
 			/*
 			byte[] bytes = mPreview.getFramePicture(data, mCamera);
