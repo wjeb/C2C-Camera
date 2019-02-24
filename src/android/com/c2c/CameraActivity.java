@@ -363,12 +363,11 @@ public class CameraActivity extends Fragment {
 		}
 	};
 
-	public void takePreview(){
+	public void takePreview(byte[] data, Camera camera){
 		
 		alertView("CameraActivity: takePreview");
 		
 		if(mPreview != null){
-			
 			
 			eventListener.onPreviewTaken("Preview result");
 			
