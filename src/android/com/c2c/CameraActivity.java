@@ -847,6 +847,14 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 			int w = parameters.getPreviewSize().width;
             int h = parameters.getPreviewSize().height;
 			
+			final Matrix matrix = new Matrix();
+				
+				if(fragment.cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+					matrix.preScale(-1.0f, 1.0f);
+				}
+				
+			matrix.postRotate(getDisplayOrientation());
+			
 			YuvImage yuvImage = new YuvImage(data, format, w, h, null);
 				
 				Rect rect = new Rect(0, 0, w, h);
@@ -862,7 +870,10 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 				pic.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
 				
+			
 			return outputStream.toByteArray();
+			
+			
 			
 			
 			/*
