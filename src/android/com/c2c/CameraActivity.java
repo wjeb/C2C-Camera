@@ -363,11 +363,14 @@ public class CameraActivity extends Fragment {
 		}
 	};
 
-	public void takePreview(byte[] data, Camera camera){
+	public void takePreview(){
 		
-		alertView("CameraActivity: takePreview");
+		//alertView("CameraActivity: takePreview");
 		
 		if(mPreview != null){
+			
+			final byte[] data;
+			//final Camera camera;
 			
 			byte[] bytes = mPreview.getFramePicture(data, camera);
 			String originalPictureInBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
@@ -417,7 +420,7 @@ public class CameraActivity extends Fragment {
 
 	public void takePicture(){
 		
-		alertView("CameraActivity: takePicture");
+		//alertView("CameraActivity: takePicture");
 		
 		if(mPreview != null){
 			
