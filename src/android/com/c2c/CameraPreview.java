@@ -178,7 +178,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 			return false;
 		}
 		
-		//alertView("Preview: takePreview");
+		// alertView("Preview: takePreview");
 		
 		PluginResult pluginResult = new PluginResult(PluginResult.Status.OK);
 		pluginResult.setKeepCallback(true);
