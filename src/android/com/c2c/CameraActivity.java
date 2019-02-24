@@ -869,9 +869,9 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				matrix.postRotate(getDisplayOrientation());
 				
 			
+			/*
 			Bitmap portraitPicture = Bitmap.createBitmap(pic, 0, 0, (int)(pic.getWidth()), (int)(pic.getHeight()), matrix, false);
 				
-				/*
 				double displayW = (double) fragment.width/fragment.height;
 				double displayH = (double) fragment.height/fragment.width;
 				
@@ -900,7 +900,6 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				
 				picWidth = boxSideSize;
 				picHeight = boxSideSize;
-				*/
 				
 			
 			//Bitmap centralSquare = Bitmap.createBitmap(portraitPicture, (int)leftMargin, (int)topMargin, (int)picWidth, (int)picHeight);
@@ -909,7 +908,9 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 				centralSquare.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
 				
-			return outputStream.toByteArray();
+			*/
+			
+			//return outputStream.toByteArray();
 			
         }
 		
