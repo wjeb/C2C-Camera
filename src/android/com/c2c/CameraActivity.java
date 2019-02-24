@@ -369,8 +369,30 @@ public class CameraActivity extends Fragment {
 		
 		if(mPreview != null){
 			
+			
 			eventListener.onPreviewTaken("Preview result");
-			//eventListener.onPreviewTaken("Preview result");
+			
+			Camera.Parameters parameters = camera.getParameters();
+			
+			int format = parameters.getPreviewFormat();
+			
+			//YUV formats require conversion
+			if(format == ImageFormat.NV21 || format == ImageFormat.YUY2 || format == ImageFormat.NV16) {
+				
+				int w = parameters.getPreviewSize().width;
+				int h = parameters.getPreviewSize().height;
+				
+				// Get the YuV image
+				YuvImage yuvImage = new YuvImage(data, format, w, h, null);
+				
+				// Convert YuV to Jpeg
+				Rect rect = new Rect(0, 0, w, h);
+				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+				yuvImage.compressToJpeg(rect, 100, outputStream);
+				
+				eventListener.onPreviewTaken(outputStream.toByteArray());
+				
+			}
 			
 			//mCamera.takePicture(null, null, CameraJPEGCallback);
 			//mCamera.autoFocus(CameraAutoFocusCallback);
