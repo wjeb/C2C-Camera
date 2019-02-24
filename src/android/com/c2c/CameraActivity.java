@@ -369,7 +369,7 @@ public class CameraActivity extends Fragment {
 		
 		if(mPreview != null){
 			
-			eventListener.onPictureTaken("Preview result");
+			eventListener.onPreviewTaken("Preview result");
 			//eventListener.onPreviewTaken("Preview result");
 			
 			//mCamera.takePicture(null, null, CameraJPEGCallback);
