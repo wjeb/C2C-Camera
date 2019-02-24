@@ -362,14 +362,14 @@ public class CameraActivity extends Fragment {
 		}
 	};
 
-
 	public void takePreview(){
 		
 		alertView("CameraActivity: takePreview");
 		
 		if(mPreview != null){
 			
-			eventListener.onPreviewTaken("Preview result");
+			eventListener.onPictureTaken("Preview result");
+			//eventListener.onPreviewTaken("Preview result");
 			
 			//mCamera.takePicture(null, null, CameraJPEGCallback);
 			//mCamera.autoFocus(CameraAutoFocusCallback);
