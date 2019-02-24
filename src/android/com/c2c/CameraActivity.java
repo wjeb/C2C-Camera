@@ -861,12 +861,14 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				
 				final Matrix matrix = new Matrix();
 					
+					/*
 					if(fragment.cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
 						Log.d(TAG, "LOL: mirror y axis");
 						matrix.preScale(-1.0f, 1.0f);
 					}
+					*/
 					
-				//matrix.postRotate(fragment.mPreview.getDisplayOrientation());
+				matrix.postRotate(getDisplayOrientation());
 				
 			
 			Bitmap portraitPicture = Bitmap.createBitmap(pic, 0, 0, (int)(pic.getWidth()), (int)(pic.getHeight()), matrix, false);
