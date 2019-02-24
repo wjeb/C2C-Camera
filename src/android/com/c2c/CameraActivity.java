@@ -863,22 +863,18 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 					
 					final Matrix matrix = new Matrix();
 						
-						
 						if(fragment.cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
 							Log.d(TAG, "LOL: mirror y axis");
 							matrix.preScale(-1.0f, 1.0f);
 						}
 						
-						
 					matrix.postRotate(fragment.mPreview.getDisplayOrientation());
 					
 				
-				
-				/*
 				Bitmap portraitPicture = Bitmap.createBitmap(pic, 0, 0, (int)(pic.getWidth()), (int)(pic.getHeight()), matrix, false);
 					
-					double displayW = (double) width/height;
-					double displayH = (double) height/width;
+					double displayW = (double) fragment.width/fragment.height;
+					double displayH = (double) fragment.height/fragment.width;
 					
 					double picW = (double) portraitPicture.getWidth()/portraitPicture.getHeight();
 					double picH = (double) portraitPicture.getHeight()/portraitPicture.getWidth();
@@ -914,17 +910,12 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 					ByteArrayOutputStream stream = new ByteArrayOutputStream();
 					centralSquare.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 					
-					byte[] attachmentBytes = stream.toByteArray();
-					String originalPictureInBase64 = Base64.encodeToString(attachmentBytes, Base64.DEFAULT);
+					//byte[] attachmentBytes = stream.toByteArray();
+					//String originalPictureInBase64 = Base64.encodeToString(attachmentBytes, Base64.DEFAULT);
 					
-				eventListener.onPictureTaken(originalPictureInBase64);
-				*/
+				return stream.toByteArray();
 				
 			//---------------- TEST ---------------|
-			
-			
-			
-			
 			
 			//return outputStream.toByteArray();
 			
