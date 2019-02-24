@@ -881,12 +881,25 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 					picHeight = Math.round(picWidth * displayH);
 				}
 				
+				double leftMargin = Math.round( ((double)portraitPicture.getWidth() - picWidth) / 2 );
+				double topMargin = Math.round( ((double)portraitPicture.getHeight() - picHeight) / 2 );
+				
+				int widthPercent = 40;
+				int boxSideSize = (int) Math.round(picWidth / 100 * widthPercent);
+				
+				leftMargin = leftMargin + ((picWidth - boxSideSize) / 2);
+				topMargin = topMargin + ((picHeight - boxSideSize) / 2);
+				
+				picWidth = boxSideSize;
+				picHeight = boxSideSize;
+				
+			
+			Bitmap centralSquare = Bitmap.createBitmap(portraitPicture, (int)leftMargin, (int)topMargin, (int)picWidth, (int)picHeight);
+				
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
-				portraitPicture.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+				centralSquare.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 				
 			return stream.toByteArray();
-			
-			
 			
 			
 			/*
