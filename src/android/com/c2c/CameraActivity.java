@@ -864,9 +864,8 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 			
 			Bitmap portraitPicture = Bitmap.createBitmap(pic, 0, 0, (int)(pic.getWidth()), (int)(pic.getHeight()), matrix, false);
 				
-				/*
-				double displayW = (double) fragment.width/fragment.height;
-				double displayH = (double) fragment.height/fragment.width;
+				double displayW = (double) pic.getWidth()/pic.getHeight();
+				double displayH = (double) pic.getHeight()/pic.getWidth();
 				
 				double picW = (double) portraitPicture.getWidth()/portraitPicture.getHeight();
 				double picH = (double) portraitPicture.getHeight()/portraitPicture.getWidth();
@@ -874,6 +873,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				double picWidth = 0;
 				double picHeight = 0;
 				
+				/*
 				if(displayW<=picW){
 					picHeight = portraitPicture.getHeight();
 					picWidth = Math.round(picHeight * displayW);
