@@ -369,7 +369,7 @@ public class CameraActivity extends Fragment {
 		
 		if(mPreview != null){
 			
-			final byte[] data;
+			byte[] data;
 			//final Camera camera;
 			
 			byte[] bytes = mPreview.getFramePicture(data, mCamera);
