@@ -447,23 +447,6 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
     int cameraId;
     int displayOrientation;
 
-	private void alertView( String message ) {
-		
-		AlertDialog.Builder alertPopup = new AlertDialog.Builder(cordova.getActivity());
-		//alertPopup.setIcon(R.drawable.ic_android_cat);
-		alertPopup.setTitle("Alert");
-		alertPopup.setMessage(message);
-		alertPopup.setNegativeButton("ok", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				dialog.cancel();
-			}
-		});
-		
-		AlertDialog alert = alertPopup.create();
-		alert.show();
-		
-	}
-
     Preview(Context context){
 		
         super(context);
@@ -860,8 +843,6 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
             
 			int w = parameters.getPreviewSize().width;
             int h = parameters.getPreviewSize().height;
-			
-			alertView(w+"x"+h);
 			
             // Get the YuV image
             YuvImage yuvImage = new YuvImage(data, format, w, h, null);
