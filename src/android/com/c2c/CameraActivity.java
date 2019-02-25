@@ -300,16 +300,16 @@ public class CameraActivity extends Fragment {
 	Camera.PreviewCallback CameraPreviewCallback = new Camera.PreviewCallback() {
 		public void onPreviewFrame(byte[] data, Camera camera) {
 			
-			//if(canTakePreview){
+			if(canTakePreview){
 				
 				byte[] bytes = mPreview.getFramePicture(data, camera);
 				String previewPictureInBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
 				
 				eventListener.onPreviewTaken(previewPictureInBase64);
 				
-				//canTakePreview = false;
+				canTakePreview = false;
 				
-			//}
+			}
 			
 		}
 	};
@@ -858,7 +858,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				Rect rect = new Rect(0, 0, w, h);
 				
 				ByteArrayOutputStream yuvOutputStream = new ByteArrayOutputStream();
-				yuvImage.compressToJpeg(rect, 100, yuvOutputStream);
+				yuvImage.compressToJpeg(rect, 50, yuvOutputStream);
 				
 				byte[] imageBytes = yuvOutputStream.toByteArray();
 				
@@ -900,7 +900,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 			Bitmap centralSquare = Bitmap.createBitmap(portraitPicture, (int)leftMargin, (int)topMargin, (int)picWidth, (int)picHeight);
 				
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
-				centralSquare.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+				centralSquare.compress(Bitmap.CompressFormat.JPEG, 50, stream);
 				
 			return stream.toByteArray();
 			
