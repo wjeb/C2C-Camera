@@ -306,7 +306,6 @@ public class CameraActivity extends Fragment {
 				String previewPictureInBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
 				
 				eventListener.onPreviewTaken(previewPictureInBase64);
-				
 				canTakePreview = false;
 				
 			}
