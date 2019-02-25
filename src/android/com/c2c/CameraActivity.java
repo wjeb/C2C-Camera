@@ -858,7 +858,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 				Rect rect = new Rect(0, 0, w, h);
 				
 				ByteArrayOutputStream yuvOutputStream = new ByteArrayOutputStream();
-				yuvImage.compressToJpeg(rect, 75, yuvOutputStream);
+				yuvImage.compressToJpeg(rect, 30, yuvOutputStream);
 				
 				byte[] imageBytes = yuvOutputStream.toByteArray();
 				
@@ -900,7 +900,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 			Bitmap centralSquare = Bitmap.createBitmap(portraitPicture, (int)leftMargin, (int)topMargin, (int)picWidth, (int)picHeight);
 				
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
-				centralSquare.compress(Bitmap.CompressFormat.JPEG, 75, stream);
+				centralSquare.compress(Bitmap.CompressFormat.JPEG, 30, stream);
 				
 			return stream.toByteArray();
 			
