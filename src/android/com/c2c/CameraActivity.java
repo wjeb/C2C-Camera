@@ -402,6 +402,11 @@ public class CameraActivity extends Fragment {
 		
 		if(mPreview != null){
 			
+			canTakePreview = false;
+			setPreviewCallback = false;
+			
+			mCamera.setPreviewCallback(null);
+			
 			mCamera.takePicture(null, null, CameraJPEGCallback);
 			//mCamera.autoFocus(CameraAutoFocusCallback);
 			
