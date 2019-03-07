@@ -331,6 +331,36 @@
 							CGImageRef cropCGImage = CGImageCreateWithImageInRect(takenCGImage, cropRect);
 							takenImage = [UIImage imageWithCGImage:cropCGImage scale:1 orientation:takenImage.imageOrientation];
 							
+							let takenSize = takenImage.size;
+							
+							let takenWidth = takenSize.width;
+							let takenHeight = takenSize.height;
+							
+							NSString *alertMessage2 = [NSString stringWithFormat: @"Preview size: %f x %f", takenWidth, takenHeight];
+							UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage2 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+							[alert2 show];
+							
+							//---
+								
+								if(takenWidth>200){
+									
+									let heightRatio = takenWidth/takenHeight;
+									newSize = CGSize(width: 200, height: 200 * heightRatio);
+									
+									let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height);
+									UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0);
+									
+									UIImage *resizedImage  = [UIImage imageWithData:jpegData];
+									resizedImage.drawInRect(rect);
+									
+									let takenImage = UIGraphicsGetImageFromCurrentImageContext();
+									UIGraphicsEndImageContext();
+									
+									
+								}
+								
+							//---
+							
 							NSData *imageData = UIImageJPEGRepresentation(takenImage, 1.0);
 							NSString *originalPictureInBase64 = [imageData base64Encoding];
 							
