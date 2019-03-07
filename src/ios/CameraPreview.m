@@ -314,7 +314,7 @@
 							CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:originalPictureInBase64];
 							
 							[pluginResult setKeepCallbackAsBool:true];
-							[self.commandDelegate sendPluginResult:pluginResult callbackId:self.setOnPreviewTakenHandler];
+							[self.commandDelegate sendPluginResult:pluginResult callbackId:self.onPreviewTakenHandlerId];
 							
 							
 						
