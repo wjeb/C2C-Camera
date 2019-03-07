@@ -124,9 +124,22 @@
         CDVPluginResult *pluginResult;
 
         if (self.cameraRenderController != NULL) {
+				
+				NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+				
+				for (AVCaptureDevice *device in devices) {
+					if ([device hasFlash] == YES) {
+						[device lockForConfiguration:nil];
+						[device setFlashMode:AVCaptureFlashModeOn];
+						[device unlockForConfiguration];
+					}
+				}
+				
                 CGFloat maxW = (CGFloat)[command.arguments[0] floatValue];
                 CGFloat maxH = (CGFloat)[command.arguments[1] floatValue];
+				
                 [self invokeTakePicture:maxW withHeight:maxH];
+				
         } else {
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Camera not started"];
                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
