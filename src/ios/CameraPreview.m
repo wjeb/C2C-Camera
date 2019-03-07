@@ -348,14 +348,13 @@
 									[resizeFilter setValue:[NSNumber numberWithFloat:1.0f] forKey:@"inputAspectRatio"];
 									[resizeFilter setValue:[NSNumber numberWithFloat:scale] forKey:@"inputScale"];
 									
-								takenImage = [resizeFilter outputImage];
+								//takenImage = [resizeFilter outputImage];
 								
 							//------------ Resizing ------------|
 							
 							NSString *alertMessage3 = [NSString stringWithFormat: @"Preview resizes: %f x %f", takenImage.size.width, takenImage.size.height];
 							UIAlertView *alert3 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage3 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
 							[alert3 show];
-							
 							
 							NSData *imageData = UIImageJPEGRepresentation(takenImage, quality);
 							NSString *originalPictureInBase64 = [imageData base64Encoding];
