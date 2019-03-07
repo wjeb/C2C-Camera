@@ -345,7 +345,7 @@
 									CGFloat heightRatio = takenWidth/takenHeight;
 									
 									CGSize newSize = CGSizeMake(200, 200 * heightRatio);
-									CGRect rect = CGRectMake(x: 0, y: 0, width: newSize.width, height: newSize.height);
+									CGRect rect = CGRectMake(0, 0, newSize.width, newSize.height);
 									
 									UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0);
 									
