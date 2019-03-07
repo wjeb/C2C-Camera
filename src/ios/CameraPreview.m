@@ -344,16 +344,15 @@
 									
 									CGFloat heightRatio = takenWidth/takenHeight;
 									
-									var newSize: CGSize;
-									newSize = CGSizeMake(200, 200 * heightRatio);
+									CGSize newSize = CGSizeMake(200, 200 * heightRatio);
+									CGRect rect = CGRectMake(x: 0, y: 0, width: newSize.width, height: newSize.height);
 									
-									rect = CGRectMake(x: 0, y: 0, width: newSize.width, height: newSize.height);
 									UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0);
 									
 									UIImage *resizedImage  = [UIImage imageWithData:jpegData];
 									resizedImage.drawInRect(rect);
 									
-									takenImage = UIGraphicsGetImageFromCurrentImageContext();
+									UIImage *takenImage = UIGraphicsGetImageFromCurrentImageContext();
 									UIGraphicsEndImageContext();
 									
 								}
