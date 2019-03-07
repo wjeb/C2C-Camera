@@ -165,8 +165,7 @@
             CGFloat maxW = (CGFloat)[command.arguments[0] floatValue];
             CGFloat maxH = (CGFloat)[command.arguments[1] floatValue];
 			
-            //[self invokeTakePreview:maxW withHeight:maxH];
-			[self invokeTakePreview:800 withHeight:800 maxQuality:75];
+			[self invokeTakePreview:800 withHeight:800 withQuality:0.75];
 			
         } else {
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Camera not started"];
@@ -269,7 +268,7 @@
          }];
 }
 
-- (void) invokeTakePreview:(CGFloat) maxWidth maxWidth:(CGFloat) maxHeight maxHeight:(CGFloat) maxQuality maxQuality:(CGFloat)  {
+- (void) invokeTakePreview:(CGFloat) width withHeight:(CGFloat) height withQuality:(CGFloat) quality{
         
 		//NSString *alertMessage3 = [NSString stringWithFormat: @"Callback invokeTakePreview Started"];
 		//UIAlertView *alert3 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage3 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
@@ -332,14 +331,14 @@
 							CGImageRef cropCGImage = CGImageCreateWithImageInRect(takenCGImage, cropRect);
 							takenImage = [UIImage imageWithCGImage:cropCGImage scale:1 orientation:takenImage.imageOrientation];
 							
-							NSString *alertMessage2 = [NSString stringWithFormat: @"Preview size: %f x %f", takenWidth, takenHeight];
+							NSString *alertMessage2 = [NSString stringWithFormat: @"Preview size: %f x %f", takenImage.size.width, takenImage.size.height];
 							UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage2 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
 							[alert2 show];
 							
 							//------------ Resizing ------------|
 								
-								CGFloat scaleHeight = maxWidth/takenImage.size.height;
-								CGFloat scaleWidth = maxHeight/takenImage.size.width;
+								CGFloat scaleHeight = width/takenImage.size.height;
+								CGFloat scaleWidth = height/takenImage.size.width;
 								
 								CGFloat scale = scaleHeight > scaleWidth ? scaleWidth : scaleHeight;
 								
@@ -353,7 +352,12 @@
 								
 							//------------ Resizing ------------|
 							
-							NSData *imageData = UIImageJPEGRepresentation(takenImage, 0.75);
+							NSString *alertMessage2 = [NSString stringWithFormat: @"Preview resizes: %f x %f", takenImage.size.width, takenImage.size.height];
+							UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage2 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+							[alert2 show];
+							
+							
+							NSData *imageData = UIImageJPEGRepresentation(takenImage, quality);
 							NSString *originalPictureInBase64 = [imageData base64Encoding];
 							
 							CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:originalPictureInBase64];
