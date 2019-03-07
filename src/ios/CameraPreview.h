@@ -22,7 +22,7 @@
 - (void) invokeTakePicture:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight;
 - (void) invokeTakePicture;
 
-- (void) invokeTakePreview(CGFloat) maxWidth withHeight:(CGFloat) maxHeight;
+- (void) invokeTakePreview:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight;
 - (void) invokeTakePreview;
 
 @property (nonatomic) CameraSessionManager *sessionManager;
