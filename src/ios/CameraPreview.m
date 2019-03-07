@@ -257,9 +257,9 @@
 
 - (void) invokeTakePreview:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight {
         
-		NSString *alertMessage3 = [NSString stringWithFormat: @"Callback invokeTakePreview Started"];
-		UIAlertView *alert3 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage3 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-		[alert3 show];
+		//NSString *alertMessage3 = [NSString stringWithFormat: @"Callback invokeTakePreview Started"];
+		//UIAlertView *alert3 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage3 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+		//[alert3 show];
 		
 		AVCaptureConnection *connection = [self.sessionManager.stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
         [self.sessionManager.stillImageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^(CMSampleBufferRef sampleBuffer, NSError *error) {
@@ -290,9 +290,9 @@
 						CGFloat resultWidth = 0;
 						CGFloat resultHeight = 0;
 						
-						NSString *alertMessage2 = [NSString stringWithFormat: @"Display size: %f x %f", screenWidth, screenHeight];
-						UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage2 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-						[alert2 show];
+						//NSString *alertMessage2 = [NSString stringWithFormat: @"Display size: %f x %f", screenWidth, screenHeight];
+						//UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage2 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+						//[alert2 show];
 						
 						if(displayW<=picW){
 							resultHeight = imageHeight;
