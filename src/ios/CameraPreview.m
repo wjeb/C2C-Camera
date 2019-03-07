@@ -331,10 +331,11 @@
 							CGImageRef cropCGImage = CGImageCreateWithImageInRect(takenCGImage, cropRect);
 							takenImage = [UIImage imageWithCGImage:cropCGImage scale:1 orientation:takenImage.imageOrientation];
 							
-							NSString *alertMessage2 = [NSString stringWithFormat: @"Preview size: %f x %f", takenImage.size.width, takenImage.size.height];
-							UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage2 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-							[alert2 show];
+							//NSString *alertMessage2 = [NSString stringWithFormat: @"Preview size: %f x %f", takenImage.size.width, takenImage.size.height];
+							//UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage2 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+							//[alert2 show];
 							
+							/*
 							//------------ Resizing ------------|
 								
 								CGFloat scaleHeight = width/takenImage.size.height;
@@ -351,10 +352,11 @@
 								//takenImage = [resizeFilter outputImage];
 								
 							//------------ Resizing ------------|
+							*/
 							
-							NSString *alertMessage3 = [NSString stringWithFormat: @"Preview resizes: %f x %f", takenImage.size.width, takenImage.size.height];
-							UIAlertView *alert3 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage3 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-							[alert3 show];
+							//NSString *alertMessage3 = [NSString stringWithFormat: @"Preview resizes: %f x %f", takenImage.size.width, takenImage.size.height];
+							//UIAlertView *alert3 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage3 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+							//[alert3 show];
 							
 							NSData *imageData = UIImageJPEGRepresentation(takenImage, quality);
 							NSString *originalPictureInBase64 = [imageData base64Encoding];
