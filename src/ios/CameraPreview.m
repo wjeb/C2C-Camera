@@ -329,22 +329,22 @@
 							CGRect cropRect = CGRectMake(topMargin, leftMargin, boxSideSize, boxSideSize);
 							
 							CGImageRef cropCGImage = CGImageCreateWithImageInRect(takenCGImage, cropRect);
-							takenImage = [UIImage imageWithCGImage:cropCGImage scale:1 orientation:takenImage.imageOrientation];
+							croppedImage = [UIImage imageWithCGImage:cropCGImage scale:1 orientation:croppedImage.imageOrientation];
 							
-							NSString *alertMessage2 = [NSString stringWithFormat: @"Preview size: %f x %f", takenImage.size.width, takenImage.size.height];
+							NSString *alertMessage2 = [NSString stringWithFormat: @"Preview size: %f x %f", croppedImage.size.width, croppedImage.size.height];
 							UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage2 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
 							[alert2 show];
 							
 							//------------ Resizing ------------|
 								
-								CGFloat scaleHeight = width/takenImage.size.height;
-								CGFloat scaleWidth = height/takenImage.size.width;
+								CGFloat scaleHeight = width/croppedImage.size.height;
+								CGFloat scaleWidth = height/croppedImage.size.width;
 								
 								CGFloat scale = scaleHeight > scaleWidth ? scaleWidth : scaleHeight;
 								
 								CIFilter *resizeFilter = [CIFilter filterWithName:@"CILanczosScaleTransform"];
 									
-									[resizeFilter setValue:[[CIImage alloc] initWithCGImage:[takenImage CGImage]] forKey:kCIInputImageKey];
+									[resizeFilter setValue:[[CIImage alloc] initWithCGImage:[croppedImage CGImage]] forKey:kCIInputImageKey];
 									[resizeFilter setValue:[NSNumber numberWithFloat:1.0f] forKey:@"inputAspectRatio"];
 									[resizeFilter setValue:[NSNumber numberWithFloat:scale] forKey:@"inputScale"];
 									
