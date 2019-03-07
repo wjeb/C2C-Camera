@@ -11,6 +11,7 @@
 
 @protocol TakePictureDelegate
 - (void) invokeTakePicture;
+- (void) invokeTakePreview;
 @end;
 
 @interface CameraRenderController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate> {

@@ -13,15 +13,21 @@
 - (void) hideCamera:(CDVInvokedUrlCommand*)command;
 - (void) switchCamera:(CDVInvokedUrlCommand*)command;
 - (void) takePicture:(CDVInvokedUrlCommand*)command;
+- (void) takePreview:(CDVInvokedUrlCommand*)command;
 - (void) setOnPictureTakenHandler:(CDVInvokedUrlCommand*)command;
+- (void) setOnPreviewTakenHandler:(CDVInvokedUrlCommand*)command;
 - (void) setColorEffect:(CDVInvokedUrlCommand*)command;
 - (void) setFlashLight:(CDVInvokedUrlCommand*)command;
 
 - (void) invokeTakePicture:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight;
 - (void) invokeTakePicture;
 
+- (void) invokeTakePreview(CGFloat) maxWidth withHeight:(CGFloat) maxHeight;
+- (void) invokeTakePreview;
+
 @property (nonatomic) CameraSessionManager *sessionManager;
 @property (nonatomic) CameraRenderController *cameraRenderController;
 @property (nonatomic) NSString *onPictureTakenHandlerId;
+@property (nonatomic) NSString *onPreviewTakenHandlerId;
 
 @end
