@@ -280,11 +280,6 @@
                  NSLog(@"Done creating still image");
 
                  if (error) {
-					
-		NSString *alertMessage3 = [NSString stringWithFormat: @"ERROR"];
-		UIAlertView *alert3 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage3 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-		[alert3 show];
-					
                          NSLog(@"%@", error);
                  } else {
 						
