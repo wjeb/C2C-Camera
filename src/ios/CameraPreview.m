@@ -155,7 +155,7 @@
 
 -(void) setOnPreviewTakenHandler:(CDVInvokedUrlCommand*)command {
         NSLog(@"setOnPreviewTakenHandler");
-        self.setOnPreviewTakenHandlerId = command.callbackId;
+        self.onPreviewTakenHandlerId = command.callbackId;
 }
 
 - (void) invokeTakePicture {
