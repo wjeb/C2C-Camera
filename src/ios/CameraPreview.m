@@ -331,10 +331,10 @@
 							CGImageRef cropCGImage = CGImageCreateWithImageInRect(takenCGImage, cropRect);
 							takenImage = [UIImage imageWithCGImage:cropCGImage scale:1 orientation:takenImage.imageOrientation];
 							
-							let takenSize = takenImage.size;
+							takenSize = takenImage.size;
 							
-							let takenWidth = takenSize.width;
-							let takenHeight = takenSize.height;
+							takenWidth = takenSize.width;
+							takenHeight = takenSize.height;
 							
 							NSString *alertMessage2 = [NSString stringWithFormat: @"Preview size: %f x %f", takenWidth, takenHeight];
 							UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage2 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
@@ -344,18 +344,17 @@
 								
 								if(takenWidth>200){
 									
-									let heightRatio = takenWidth/takenHeight;
+									heightRatio = takenWidth/takenHeight;
 									newSize = CGSize(width: 200, height: 200 * heightRatio);
 									
-									let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height);
+									rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height);
 									UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0);
 									
 									UIImage *resizedImage  = [UIImage imageWithData:jpegData];
 									resizedImage.drawInRect(rect);
 									
-									let takenImage = UIGraphicsGetImageFromCurrentImageContext();
+									takenImage = UIGraphicsGetImageFromCurrentImageContext();
 									UIGraphicsEndImageContext();
-									
 									
 								}
 								
