@@ -133,14 +133,39 @@
         }
 }
 
+- (void) takePreview:(CDVInvokedUrlCommand*)command {
+        NSLog(@"takePreview");
+        CDVPluginResult *pluginResult;
+
+        if (self.cameraRenderController != NULL) {
+                CGFloat maxW = (CGFloat)[command.arguments[0] floatValue];
+                CGFloat maxH = (CGFloat)[command.arguments[1] floatValue];
+                [self invokeTakePreview:maxW withHeight:maxH];
+        } else {
+                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Camera not started"];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }
+}
+
+
 -(void) setOnPictureTakenHandler:(CDVInvokedUrlCommand*)command {
         NSLog(@"setOnPictureTakenHandler");
         self.onPictureTakenHandlerId = command.callbackId;
 }
 
+-(void) setOnPreviewTakenHandler:(CDVInvokedUrlCommand*)command {
+        NSLog(@"setOnPreviewTakenHandler");
+        self.setOnPreviewTakenHandlerId = command.callbackId;
+}
+
 - (void) invokeTakePicture {
         [self invokeTakePicture:0.0 withHeight:0.0];
 }
+
+- (void) invokeTakePreview {
+        [self invokeTakePreview:0.0 withHeight:0.0];
+}
+
 - (void) invokeTakePicture:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight {
         AVCaptureConnection *connection = [self.sessionManager.stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
         [self.sessionManager.stillImageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^(CMSampleBufferRef sampleBuffer, NSError *error) {
@@ -216,4 +241,81 @@
                  }
          }];
 }
+
+- (void) invokeTakePreview:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight {
+        AVCaptureConnection *connection = [self.sessionManager.stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
+        [self.sessionManager.stillImageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^(CMSampleBufferRef sampleBuffer, NSError *error) {
+
+                 NSLog(@"Done creating still image");
+
+                 if (error) {
+                         NSLog(@"%@", error);
+                 } else {
+						
+						NSData *jpegData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:sampleBuffer];
+						UIImage *takenImage  = [UIImage imageWithData:jpegData];
+						
+						CGImageRef takenCGImage = takenImage.CGImage;
+						
+						CGFloat imageWidth = CGImageGetHeight(takenCGImage);
+						CGFloat imageHeight = CGImageGetWidth(takenCGImage);
+						
+						CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
+						CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+						
+						CGFloat displayW = screenWidth / screenHeight;
+						CGFloat displayH = screenHeight / screenWidth;
+						
+						CGFloat picW = imageWidth / imageHeight;
+						CGFloat picH = imageHeight / imageWidth;
+						
+						CGFloat resultWidth = 0;
+						CGFloat resultHeight = 0;
+						
+						/*
+						NSString *alertMessage2 = [NSString stringWithFormat: @"Display size: %f x %f", screenWidth, screenHeight];
+						UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:alertMessage2 delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+						[alert2 show];
+						#comment
+						*/
+						
+						if(displayW<=picW){
+							resultHeight = imageHeight;
+							resultWidth = round(resultHeight * displayW);
+						}else{
+							resultWidth = imageWidth;
+							resultHeight = round(resultWidth * displayH);
+						}
+						
+						CGFloat leftMargin = round((imageWidth - resultWidth) / 2);
+						CGFloat topMargin = round((imageHeight - resultHeight) / 2);
+						
+						CGFloat widthPercent = 30;
+						CGFloat boxSideSize = round(resultWidth / 100 * widthPercent);
+						
+						leftMargin = leftMargin + round((resultWidth - boxSideSize) / 2);
+						topMargin = topMargin + round((resultHeight - boxSideSize) / 2);
+						
+						// Send original
+							
+							CGRect cropRect = CGRectMake(topMargin, leftMargin, boxSideSize, boxSideSize);
+							
+							CGImageRef cropCGImage = CGImageCreateWithImageInRect(takenCGImage, cropRect);
+							takenImage = [UIImage imageWithCGImage:cropCGImage scale:1 orientation:takenImage.imageOrientation];
+							
+							NSData *imageData = UIImageJPEGRepresentation(takenImage, 1.0);
+							NSString *originalPictureInBase64 = [imageData base64Encoding];
+							
+							CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:originalPictureInBase64];
+							
+							[pluginResult setKeepCallbackAsBool:true];
+							[self.commandDelegate sendPluginResult:pluginResult callbackId:self.setOnPreviewTakenHandler];
+							
+							
+						
+						
+                 }
+         }];
+}
+
 @end
