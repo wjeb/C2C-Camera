@@ -73,8 +73,6 @@
                         }
                 }
 				
-				AVCaptureTorchMode
-				
 				if ([videoDevice isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
 					if ([videoDevice lockForConfiguration:&error]) {
                         [videoDevice setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
