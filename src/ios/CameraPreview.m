@@ -127,10 +127,18 @@
 				
 				NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
 				
+				//for (AVCaptureDevice *device in devices) {
+				//	if ([device hasFlash] == YES) {
+				//		[device lockForConfiguration:nil];
+				//		[device setFlashMode:AVCaptureFlashModeOn];
+				//		[device unlockForConfiguration];
+				//	}
+				//}
+				
 				for (AVCaptureDevice *device in devices) {
-					if ([device hasFlash] == YES) {
+					if ([device hasTorch] == YES) {
 						[device lockForConfiguration:nil];
-						[device setFlashMode:AVCaptureFlashModeOn];
+						[device setTorchMode:AVCaptureTorchModeOn];
 						[device unlockForConfiguration];
 					}
 				}
@@ -154,10 +162,18 @@
 			
 			NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
 			
+			//for (AVCaptureDevice *device in devices) {
+			//	if ([device hasFlash] == YES) {
+			//		[device lockForConfiguration:nil];
+			//		[device setFlashMode:AVCaptureFlashModeOff];
+			//		[device unlockForConfiguration];
+			//	}
+			//}
+			
 			for (AVCaptureDevice *device in devices) {
-				if ([device hasFlash] == YES) {
+				if ([device hasTorch] == YES) {
 					[device lockForConfiguration:nil];
-					[device setFlashMode:AVCaptureFlashModeOff];
+					[device setTorchMode:AVCaptureTorchModeOn];
 					[device unlockForConfiguration];
 				}
 			}

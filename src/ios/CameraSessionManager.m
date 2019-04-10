@@ -55,16 +55,14 @@
                 AVCaptureDevice *videoDevice = [CameraSessionManager deviceWithMediaType:AVMediaTypeVideo preferringPosition:self.defaultCamera];
 				
 				
-				/*
-                if ([videoDevice hasFlash] && [videoDevice isFlashModeSupported:AVCaptureFlashModeOn]) {
-                        if ([videoDevice lockForConfiguration:&error]) {
-                                [videoDevice setFlashMode:AVCaptureFlashModeOn];
-                                [videoDevice unlockForConfiguration];
-                        } else {
-                                NSLog(@"%@", error);
-                        }
-                }
-				*/
+    //            if ([videoDevice hasFlash] && [videoDevice isFlashModeSupported:AVCaptureFlashModeOn]) {
+    //                    if ([videoDevice lockForConfiguration:&error]) {
+    //                            [videoDevice setFlashMode:AVCaptureFlashModeOn];
+    //                            [videoDevice unlockForConfiguration];
+    //                    } else {
+    //                            NSLog(@"%@", error);
+    //                    }
+    //            }
 				
                 if ([videoDevice hasTorch] && [videoDevice isTorchModeSupported:AVCaptureTorchModeOn]) {
                         if ([videoDevice lockForConfiguration:&error]) {
