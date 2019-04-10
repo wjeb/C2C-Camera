@@ -53,7 +53,9 @@
                 }
 
                 AVCaptureDevice *videoDevice = [CameraSessionManager deviceWithMediaType:AVMediaTypeVideo preferringPosition:self.defaultCamera];
-
+				
+				
+				/*
                 if ([videoDevice hasFlash] && [videoDevice isFlashModeSupported:AVCaptureFlashModeOn]) {
                         if ([videoDevice lockForConfiguration:&error]) {
                                 [videoDevice setFlashMode:AVCaptureFlashModeOn];
@@ -62,6 +64,18 @@
                                 NSLog(@"%@", error);
                         }
                 }
+				*/
+				
+                if ([videoDevice hasTorch] && [videoDevice isTorchModeSupported:AVCaptureTorchModeOn]) {
+                        if ([videoDevice lockForConfiguration:&error]) {
+                                [videoDevice setTorchMode:AVCaptureTorchModeOn];
+                                [videoDevice unlockForConfiguration];
+                        } else {
+                                NSLog(@"%@", error);
+                        }
+                }
+				
+				AVCaptureTorchMode
 				
 				if ([videoDevice isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
 					if ([videoDevice lockForConfiguration:&error]) {
