@@ -146,7 +146,8 @@
                 CGFloat maxW = (CGFloat)[command.arguments[0] floatValue];
                 CGFloat maxH = (CGFloat)[command.arguments[1] floatValue];
 				
-				[self invokeTakePicture:maxW withHeight:maxH];
+				//[self invokeTakePicture:maxW withHeight:maxH];
+				[self invokeTakePicture:1500 withHeight:1500];
 				
         } else {
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Camera not started"];
